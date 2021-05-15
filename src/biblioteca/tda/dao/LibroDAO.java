@@ -21,7 +21,7 @@ public class LibroDAO extends Conexion {
     public int ultimoId() throws SQLException {
         super.conectar();
         int ultimoId = 0;
-        ResultSet result = state.executeQuery("SELECT @@identity AS id FROM libro");
+        ResultSet result = state.executeQuery("SELECT @@identity AS id FROM autor");
         
         while(result.next()) {
             ultimoId = (int) result.getObject(0);
