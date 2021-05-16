@@ -90,14 +90,14 @@ public class LibroDAO extends Conexion {
     public ArrayList<Libro> listarLibros() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM libro");
-        
+
         ArrayList<Libro> libros = new ArrayList<Libro>();
         Date fechaAnoLanzamiento = new Date();
         Date fechaPublicacion = new Date();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); // variable para castear sql Date a String
         String anoLanzamiento = "";
         String publicacion = "";
-        
+
         while (result.next()) {
             Libro libro = new Libro();
             libro.setId((int) result.getObject(1));
@@ -123,7 +123,7 @@ public class LibroDAO extends Conexion {
         }
         return libros;
     }
-    
+
     // MODIFICAR terminar henrry
     public void modificar(Libro libro) {
         try {
@@ -135,10 +135,20 @@ public class LibroDAO extends Conexion {
                     + ", ano_lanzamiento='" + libro.getAnoLanzamiento() + "',publicacion='" + libro.getPublicacion()
                     + "',categoria_id=" + libro.getCategoria() + ",estado_id=" + libro.getEstado()
                     + ",idioma_id=" + libro.getIdioma() + ",editorial_id=" + libro.getEditorial()
-                    + ",autor_id=" + libro.getAutor() + ");");
+                    + ",autor_id=" + libro.getAutor() + " where id=" + libro.getId() + ";");
             con.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    public int eliminar(int id){
+        int entero=0;
+        try {
+            super.conectar();
+            entero= state.executeUpdate("Delete FROM libro WHERE id="+ id +";");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return entero;
     }
 }
