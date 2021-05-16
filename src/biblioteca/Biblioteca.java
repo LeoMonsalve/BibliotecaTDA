@@ -34,10 +34,18 @@ public class Biblioteca {
             System.out.println("CONECTADO");
         }
         
+        
+        
+        Libro libro = new Libro(1, "JAJAJA", "Probando Modificar", 50, 15000, "2004-11-02", "2004-11-09", 1, 1, 1, 1, 1);
+        
+        dao.modificar(libro);
+        
+        dao.eliminar(2);
         ArrayList<Libro> libros = dao.listarLibros();
-        for(Libro libro: libros) {
-            System.out.println(libro.toString());
+        for(Libro a: libros) {
+            System.out.println(a.toString());
         }
+        
     }
     
 }

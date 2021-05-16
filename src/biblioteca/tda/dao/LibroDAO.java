@@ -124,15 +124,14 @@ public class LibroDAO extends Conexion {
         return libros;
     }
 
-    // MODIFICAR terminar henrry
     public void modificar(Libro libro) {
         try {
             super.conectar();
             int ultimoId = ultimoId();
             ultimoId++;
             super.state.executeUpdate("UPDATE libro set numero_serie='" + libro.getNumeroSerie() + "', titulo='" + libro.getTitulo()
-                    + "', =numero_paginas=" + libro.getNumeroPaginas() + ",precio_referencia= " + libro.getPrecioReferencia()
-                    + ", ano_lanzamiento='" + libro.getAnoLanzamiento() + "',publicacion='" + libro.getPublicacion()
+                    + "', numero_paginas=" + libro.getNumeroPaginas() + ",precio_referencia= " + libro.getPrecioReferencia()
+                    + ", ano_lanzamiento='" + libro.getAnoLanzamiento() + "', publicacion='" + libro.getPublicacion()
                     + "',categoria_id=" + libro.getCategoria() + ",estado_id=" + libro.getEstado()
                     + ",idioma_id=" + libro.getIdioma() + ",editorial_id=" + libro.getEditorial()
                     + ",autor_id=" + libro.getAutor() + " where id=" + libro.getId() + ";");
@@ -141,6 +140,7 @@ public class LibroDAO extends Conexion {
             ex.printStackTrace();
         }
     }
+    
     public int eliminar(int id){
         int entero=0;
         try {
