@@ -130,13 +130,12 @@ public class LibroDAO extends Conexion {
             super.conectar();
             int ultimoId = ultimoId();
             ultimoId++;
-            super.state.executeUpdate("UPDATE libro set (" + ultimoId
-                    + ", '" + libro.getNumeroSerie() + "', '" + libro.getTitulo()
-                    + "', " + libro.getNumeroPaginas() + ", " + libro.getPrecioReferencia()
-                    + ", '" + libro.getAnoLanzamiento() + "', '" + libro.getPublicacion()
-                    + "', " + libro.getCategoria() + ", " + libro.getEstado()
-                    + ", " + libro.getIdioma() + ", " + libro.getEditorial()
-                    + ", " + libro.getAutor() + ");");
+            super.state.executeUpdate("UPDATE libro set numero_serie='" + libro.getNumeroSerie() + "', titulo='" + libro.getTitulo()
+                    + "', =numero_paginas=" + libro.getNumeroPaginas() + ",precio_referencia= " + libro.getPrecioReferencia()
+                    + ", ano_lanzamiento='" + libro.getAnoLanzamiento() + "',publicacion='" + libro.getPublicacion()
+                    + "',categoria_id=" + libro.getCategoria() + ",estado_id=" + libro.getEstado()
+                    + ",idioma_id=" + libro.getIdioma() + ",editorial_id=" + libro.getEditorial()
+                    + ",autor_id=" + libro.getAutor() + ");");
             con.close();
         } catch (Exception ex) {
             ex.printStackTrace();
