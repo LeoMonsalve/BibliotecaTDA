@@ -138,6 +138,16 @@ public class Libro {
         this.autor = autor;
     }
 
+    @Override
+    public String toString() {
+        return "Libro{" + "id=" + id + ", numeroSerie=" + numeroSerie 
+                + ", titulo=" + titulo + ", numeroPaginas=" + numeroPaginas 
+                + ", precioReferencia=" + precioReferencia + ", anoLanzamiento=" 
+                + anoLanzamiento + ", publicacion=" + publicacion + ", categoria=" 
+                + categoria + ", estado=" + estado + ", idioma=" + idioma + ", editorial=" 
+                + editorial + ", autor=" + autor + '}';
+    }
+
     
     
     
