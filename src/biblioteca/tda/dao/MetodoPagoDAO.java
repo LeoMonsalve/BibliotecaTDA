@@ -57,7 +57,7 @@ public class MetodoPagoDAO extends Conexion {
 
             metodoPago.setId((int)result.getObject(1));
             metodoPago.setTipoPago((String)result.getObject(2));
-
+            metodosPago.add(metodoPago);
         }
         return metodosPago;
     }
@@ -66,7 +66,8 @@ public class MetodoPagoDAO extends Conexion {
         super.conectar();
         int ultimoRegistro= ultimoId();
         ultimoRegistro++;
-        super.state.executeQuery("UPDATE metodo_pago set tipo='" + metodoPago.getTipoPago() + "';");
+        super.state.executeQuery("UPDATE metodo_pago set tipo_pago='" + metodoPago.getTipoPago() + 
+        "' where id =" +  metodoPago.getId() + ";");
         con.close();
     } catch (Exception e) {
          e.printStackTrace();

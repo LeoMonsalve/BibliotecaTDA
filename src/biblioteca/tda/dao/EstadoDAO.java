@@ -60,7 +60,7 @@ public class EstadoDAO extends Conexion{
 
             estado.setId((int)result.getObject(1));
             estado.setDescripcion((String)result.getObject(2));
-
+            estados.add(estado);
         }
         return estados;
     }
@@ -69,7 +69,7 @@ public class EstadoDAO extends Conexion{
         super.conectar();
         int ultimoRegistro= ultimoId();
         ultimoRegistro++;
-        super.state.executeQuery("UPDATE estado set tipo='" + estado.getDescripcion() + "';");
+        super.state.executeQuery("UPDATE estado set descripcion='" + estado.getDescripcion() + "' where id= " + estado.getId()+ ";");
         con.close();
     } catch (Exception e) {
          e.printStackTrace();

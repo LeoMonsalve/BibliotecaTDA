@@ -59,6 +59,7 @@ public class EditorialDAO extends Conexion{
 
             editorial.setId((int)result.getObject(1));
             editorial.setNombre((String)result.getObject(2));
+            editoriales.add(editorial); 
 
         }
         return editoriales;
@@ -68,7 +69,7 @@ public class EditorialDAO extends Conexion{
         super.conectar();
         int ultimoRegistro= ultimoId();
         ultimoRegistro++;
-        super.state.executeQuery("UPDATE editorial set tipo='" + editorial.getNombre() + "';");
+        super.state.executeQuery("UPDATE editorial set nombre='" + editorial.getNombre() + "' where id="+ editorial.getId()+";");
         con.close();
     } catch (Exception e) {
          e.printStackTrace();
