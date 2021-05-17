@@ -12,23 +12,11 @@ public class EstadoDAO extends Conexion{
         super();
     }
     
-    public  int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId=0;
-        ResultSet result = state.executeQuery("\"SELECT id FROM estado order by id desc limit 1;\"");
-        
-         while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-    
     public void insertar(Estado estado){
             try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO estado VALUES (" + ultimoRegistro
+            int id = super.ultimoId("estado") + 1;
+            super.state.executeUpdate("INSERT INTO estado VALUES (" + id
                     + ", '" + estado.getDescripcion() + "');");  
                     
               con.close();
@@ -67,8 +55,6 @@ public class EstadoDAO extends Conexion{
     public void modificar(Estado estado){
       try {
         super.conectar();
-        int ultimoRegistro= ultimoId();
-        ultimoRegistro++;
         super.state.executeQuery("UPDATE estado set descripcion='" + estado.getDescripcion() + "' where id= " + estado.getId()+ ";");
         con.close();
     } catch (Exception e) {

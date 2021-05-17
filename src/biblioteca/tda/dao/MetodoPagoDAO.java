@@ -9,23 +9,11 @@ public class MetodoPagoDAO extends Conexion {
         super();
     }
     
-    public  int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId=0;
-        ResultSet result = state.executeQuery("\"SELECT id FROM metodo_pago order by id desc limit 1;\"");
-        
-         while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-    
     public void insertar(MetodoPago metodoPago){
             try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO metodo_pago VALUES (" + ultimoRegistro
+            int id = super.ultimoId("autor") + 1;
+            super.state.executeUpdate("INSERT INTO metodo_pago VALUES (" + id
                     + ", '" + metodoPago.getTipoPago() + "');");  
                     
               con.close();
@@ -64,8 +52,6 @@ public class MetodoPagoDAO extends Conexion {
     public void modificar(MetodoPago metodoPago){
       try {
         super.conectar();
-        int ultimoRegistro= ultimoId();
-        ultimoRegistro++;
         super.state.executeQuery("UPDATE metodo_pago set tipo_pago='" + metodoPago.getTipoPago() + 
         "' where id =" +  metodoPago.getId() + ";");
         con.close();

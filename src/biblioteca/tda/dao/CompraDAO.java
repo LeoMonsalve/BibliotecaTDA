@@ -10,23 +10,12 @@ public class CompraDAO extends Conexion{
         super();
     }
     
-    public  int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId=0;
-        ResultSet result = state.executeQuery("\"SELECT id FROM compra order by id desc limit 1;\"");
-        
-         while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
     
     public void insertar(Compra compra){
             try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO compra VALUES (" + ultimoRegistro
+            int id = super.ultimoId("compra") + 1;
+            super.state.executeUpdate("INSERT INTO compra VALUES (" + id
                     + ", '" + compra.getFecha() + "', " + compra.getDistribuidorId() + ", "
                      + compra.getFacturaId() + ");");  
                     
@@ -34,7 +23,7 @@ public class CompraDAO extends Conexion{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    } 
 
     public Compra buscar(int id) throws SQLException, Exception{
         super.conectar();
@@ -70,8 +59,6 @@ public class CompraDAO extends Conexion{
     public void modificar(Compra compra){
       try {
         super.conectar();
-        int ultimoRegistro= ultimoId();
-        ultimoRegistro++;
         super.state.executeQuery("UPDATE compra set fecha='" +  compra.getFecha() +
          "', distribuidor_id=" + compra.getDistribuidorId() + ", factura_id= "
         + compra.getFacturaId() + " where id=" + compra.getId() + ";");

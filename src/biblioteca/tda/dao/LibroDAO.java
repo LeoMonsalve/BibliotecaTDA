@@ -23,23 +23,11 @@ public class LibroDAO extends Conexion {
         super();
     }
 
-    public int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId = 0;
-        ResultSet result = state.executeQuery("SELECT id FROM libro order by id desc limit 1;");
-
-        while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-
     public void insertar(Libro libro) {
         try {
             super.conectar();
-            int ultimoId = ultimoId();
-            ultimoId++;
-            super.state.executeUpdate("INSERT INTO libro VALUES (" + ultimoId
+            int id = super.ultimoId("libro") + 1;
+            super.state.executeUpdate("INSERT INTO libro VALUES (" + id
                     + ", '" + libro.getNumeroSerie() + "', '" + libro.getTitulo()
                     + "', " + libro.getNumeroPaginas() + ", " + libro.getPrecioReferencia()
                     + ", '" + libro.getAnoLanzamiento() + "', '" + libro.getPublicacion()

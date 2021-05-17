@@ -20,23 +20,11 @@ public class AutorDAO extends Conexion {
         super();
     }
 
-    public int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId = 0;
-        ResultSet result = state.executeQuery("SELECT id FROM autor order by id desc limit 1;");
-
-        while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-
     public void insertar(Autor autor) {
         try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO autor VALUES (" + ultimoRegistro
+            int id = super.ultimoId("autor") + 1;
+            super.state.executeUpdate("INSERT INTO autor VALUES (" + id
                     + ", '" + autor.getNombre() + "', '" + autor.getApellido() + "');");
             con.close();
         } catch (Exception ex) {

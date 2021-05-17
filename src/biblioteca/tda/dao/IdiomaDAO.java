@@ -22,23 +22,11 @@ public class IdiomaDAO extends Conexion {
         super();
     }
 
-    public int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId = 0;
-        ResultSet result = state.executeQuery("SELECT id FROM idioma ORDER BY id desc limit 1;");
-
-        while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-
     public void insertar(Idioma idioma) {
         try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO idioma VALUES (" + ultimoRegistro
+            int id = super.ultimoId("idioma") + 1;
+            super.state.executeUpdate("INSERT INTO idioma VALUES (" + id
                     + ", '" + idioma.getIdioma()+ "');");
             con.close();
         } catch (Exception ex) {

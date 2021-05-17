@@ -22,23 +22,11 @@ public class CategoriaDAO extends Conexion{
         super();
     }
     
-    public  int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId=0;
-        ResultSet result = state.executeQuery("\"SELECT id FROM categoria order by id desc limit 1;\"");
-        
-         while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-    
     public void insertar(Categoria categoria){
             try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO categoria VALUES (" + ultimoRegistro
+            int id = super.ultimoId("categoria") + 1;
+            super.state.executeUpdate("INSERT INTO categoria VALUES (" + id
                     + ", '" + categoria.getTipo()+ "');");  
                     
               con.close();
@@ -77,8 +65,6 @@ public class CategoriaDAO extends Conexion{
     public void modificar(Categoria categoria){
       try {
         super.conectar();
-        int ultimoRegistro= ultimoId();
-        ultimoRegistro++;
         super.state.executeQuery("UPDATE categoria set tipo='" + categoria.getTipo() + "' where id="+
         categoria.getId() + ";");
         con.close();

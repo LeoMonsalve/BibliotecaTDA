@@ -7,6 +7,8 @@ package biblioteca.tda.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -18,7 +20,7 @@ public class Conexion {
     public Statement state;
     private String jbdc = "jdbc:mysql://localhost:3306/biblioteca";
     private String username = "root";
-    private String password = "root";
+    private String password = "Zxcvbnm,";
     
 
     public void conectar() {
@@ -29,5 +31,16 @@ public class Conexion {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public  int ultimoId(String tabla) throws SQLException {
+        conectar();
+        int ultimoId=0;
+        ResultSet result = state.executeQuery("SELECT id FROM " + tabla + " order by id desc limit 1;");
+        
+         while (result.next()) {
+            ultimoId = (int) result.getObject(1);
+        }
+        return ultimoId;
     }
 }

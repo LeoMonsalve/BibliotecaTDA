@@ -26,9 +26,9 @@ public class Biblioteca {
     public static void main(String[] args) throws SQLException, Exception {
         // TODO code application logic here
         
-        LibroDAO dao = new LibroDAO();
-        int ultimo = dao.ultimoId();
-        System.out.println("Ultimo: " + ultimo);
+        
+        Autor autor = new Autor(1, "Juanita", "Alimaña");
+        AutorDAO autorDAO = new AutorDAO();
 
   
         Conexion con = new Conexion();
@@ -36,10 +36,8 @@ public class Biblioteca {
             System.out.println("CONECTADO");
         }
         
-        AutorDAO daoAutor = new AutorDAO();
-        Autor autor = new Autor(1, "Leonel", "Monsalve");
         
-        daoAutor.insertar(autor);
+        autorDAO.insertar(autor);
     }
     
 }

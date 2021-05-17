@@ -19,24 +19,12 @@ public class FacturaDAO extends Conexion {
     public FacturaDAO() {
         super();
     }
-    
-    public int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId = 0;
-        ResultSet result = state.executeQuery("SELECT id FROM factura order by id desc limit 1;");
-
-        while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
 
     public void insertar(Factura factura) {
         try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO factura VALUES (" + ultimoRegistro
+            int id = super.ultimoId("factura") + 1;
+            super.state.executeUpdate("INSERT INTO factura VALUES (" + id
                     + ", '" + factura.getFolio() + "', " + factura.getPrecio() 
                     + ", " + factura.getPrecioIva() + ", " + factura.getCostoIva() 
                     + ", '" + factura.getFechaCompra() + "', " + factura.getDistribuidorId() 

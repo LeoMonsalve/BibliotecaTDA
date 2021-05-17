@@ -11,23 +11,11 @@ public class EditorialDAO extends Conexion{
         super();
     }
     
-    public  int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId=0;
-        ResultSet result = state.executeQuery("\"SELECT id FROM editorial order by id desc limit 1;\"");
-        
-         while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-    
     public void insertar(Editorial editorial){
             try {
             super.conectar();
-            int ultimoRegistro = ultimoId();
-            ultimoRegistro++;
-            super.state.executeUpdate("INSERT INTO editorial VALUES (" + ultimoRegistro
+            int id = super.ultimoId("editorial") + 1;
+            super.state.executeUpdate("INSERT INTO editorial VALUES (" + id
                     + ", '" + editorial.getNombre()+ "');");  
                     
               con.close();
@@ -67,8 +55,6 @@ public class EditorialDAO extends Conexion{
     public void modificar(Editorial editorial){
       try {
         super.conectar();
-        int ultimoRegistro= ultimoId();
-        ultimoRegistro++;
         super.state.executeQuery("UPDATE editorial set nombre='" + editorial.getNombre() + "' where id="+ editorial.getId()+";");
         con.close();
     } catch (Exception e) {

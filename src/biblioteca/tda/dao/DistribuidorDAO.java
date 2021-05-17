@@ -23,23 +23,11 @@ public class DistribuidorDAO extends Conexion {
         super();
     }
 
-    public int ultimoId() throws SQLException {
-        super.conectar();
-        int ultimoId = 0;
-        ResultSet result = state.executeQuery("SELECT id FROM distribuidor order by id desc limit 1;");
-
-        while (result.next()) {
-            ultimoId = (int) result.getObject(1);
-        }
-        return ultimoId;
-    }
-
     public void insertar(Distribuidor distribuidor) {
         try {
             super.conectar();
-            int ultimoId = ultimoId();
-            ultimoId++;
-            super.state.executeUpdate("INSERT INTO libro VALUES (" + ultimoId
+            int id = super.ultimoId("distribuidor") + 1;
+            super.state.executeUpdate("INSERT INTO libro VALUES (" + id
                     + ", '" + distribuidor.getRut() + "', '" + distribuidor.getNombreEmpresa()
                     + "', '" + distribuidor.getAnoDistribucion() + "', " + distribuidor.getDireccionId()
                     + ", " + distribuidor.getTelefonoId() + ";");
