@@ -17,6 +17,8 @@ public class Editorial {
         this.id = id;
         this.nombre = nombre;
     }
+    public Editorial(){
+    }
 
     public int getId() {
         return id;
