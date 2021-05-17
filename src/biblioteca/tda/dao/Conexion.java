@@ -18,7 +18,7 @@ public class Conexion {
     public Statement state;
     private String jbdc = "jdbc:mysql://localhost:3306/biblioteca";
     private String username = "root";
-    private String password = "Zxcvbnm,";
+    private String password = "root";
     
 
     public void conectar() {
