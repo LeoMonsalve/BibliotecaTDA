@@ -1,7 +1,9 @@
-import java.sql.ResultSet;
-import java.util.ArrayList;
+
 
 import biblioteca.tda.dao.Conexion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CompraDAO extends Conexion{
     public CompraDAO(){
@@ -26,7 +28,7 @@ public class CompraDAO extends Conexion{
             ultimoRegistro++;
             super.state.executeUpdate("INSERT INTO compra VALUES (" + ultimoRegistro
                     + ", '" + compra.getFecha() + "', " + compra.getDistribuidorId() + ", "
-                     + compra.facturaId() + ");");  
+                     + compra.getFacturaId() + ");");  
                     
               con.close();
         } catch (Exception e) {
@@ -59,8 +61,8 @@ public class CompraDAO extends Conexion{
 
             compra.setId((int)result.getObject(1));
             compra.setFecha((String)result.getObject(2));
-            compra.setDistribuidorId((String)result.getObject(3));
-            compra.setFacturaId((String)result.getObject(4));
+            compra.setDistribuidorId((int)result.getObject(3));
+            compra.setFacturaId((int)result.getObject(4));
             compras.add(compra);
         }
         return compras;
@@ -72,7 +74,7 @@ public class CompraDAO extends Conexion{
         ultimoRegistro++;
         super.state.executeQuery("UPDATE compra set fecha='" +  compra.getFecha() +
          "', distribuidor_id=" + compra.getDistribuidorId() + ", factura_id= "
-        + compra.facturaId() + " where id=" + compra.getId() + ";");
+        + compra.getFacturaId() + " where id=" + compra.getId() + ";");
         con.close();
     } catch (Exception e) {
          e.printStackTrace();
