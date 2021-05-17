@@ -70,7 +70,7 @@ public class CategoriaDAO extends Conexion{
 
             categoria.setId((int)result.getObject(1));
             categoria.setTipo((String)result.getObject(2));
-
+            categorias.add(categoria);
         }
         return categorias;
     }
@@ -79,7 +79,8 @@ public class CategoriaDAO extends Conexion{
         super.conectar();
         int ultimoRegistro= ultimoId();
         ultimoRegistro++;
-        super.state.executeQuery("UPDATE categoria set tipo='" + categoria.getTipo() + "';");
+        super.state.executeQuery("UPDATE categoria set tipo='" + categoria.getTipo() + "' where id="+
+        categoria.getId() + ";");
         con.close();
     } catch (Exception e) {
          e.printStackTrace();
