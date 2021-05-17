@@ -2,16 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/leone/Desktop/Otoño%202021/Taller%20diseño%20de%20APP/Nueva%20carpeta/BibliotecaTDA/src/biblioteca/Biblioteca.java</file>
-            <file>file:/C:/Users/leone/Desktop/Otoño%202021/Taller%20diseño%20de%20APP/Nueva%20carpeta/BibliotecaTDA/src/biblioteca/tda/dao/CategoriaDAO.java</file>
-            <file>file:/C:/Users/leone/Desktop/Otoño%202021/Taller%20diseño%20de%20APP/Nueva%20carpeta/BibliotecaTDA/src/biblioteca/tda/modelo/Libro.java</file>
-            <file>file:/C:/Users/leone/Desktop/Otoño%202021/Taller%20diseño%20de%20APP/Nueva%20carpeta/BibliotecaTDA/src/biblioteca/tda/dao/Conexion.java</file>
-            <file>file:/C:/Users/leone/Desktop/Otoño%202021/Taller%20diseño%20de%20APP/Nueva%20carpeta/BibliotecaTDA/src/biblioteca/tda/dao/LibroDAO.java</file>
+            <file>file:/home/henrry/NetBeansProjects/BibliotecaTDA/src/biblioteca/Biblioteca.java</file>
+            <file>file:/home/henrry/NetBeansProjects/BibliotecaTDA/src/biblioteca/tda/dao/AutorDAO.java</file>
+            <file>file:/home/henrry/NetBeansProjects/BibliotecaTDA/src/biblioteca/tda/modelo/Autor.java</file>
+            <file>file:/home/henrry/NetBeansProjects/BibliotecaTDA/src/biblioteca/tda/dao/LibroDAO.java</file>
         </group>
->>>>>>> 46378b9bb902d0c9c4d40562694e6eead5656496
     </open-files>
 </project-private>

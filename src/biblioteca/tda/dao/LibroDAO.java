@@ -127,8 +127,6 @@ public class LibroDAO extends Conexion {
     public void modificar(Libro libro) {
         try {
             super.conectar();
-            int ultimoId = ultimoId();
-            ultimoId++;
             super.state.executeUpdate("UPDATE libro set numero_serie='" + libro.getNumeroSerie() + "', titulo='" + libro.getTitulo()
                     + "', numero_paginas=" + libro.getNumeroPaginas() + ",precio_referencia= " + libro.getPrecioReferencia()
                     + ", ano_lanzamiento='" + libro.getAnoLanzamiento() + "', publicacion='" + libro.getPublicacion()

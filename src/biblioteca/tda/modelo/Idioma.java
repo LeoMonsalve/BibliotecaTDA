@@ -13,6 +13,10 @@ public class Idioma {
     private int id;
     private String idioma;
 
+    public Idioma() {
+    }
+    
+
     public Idioma(int id, String idioma) {
         this.id = id;
         this.idioma = idioma;
