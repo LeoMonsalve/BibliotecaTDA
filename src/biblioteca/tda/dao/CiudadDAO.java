@@ -65,6 +65,7 @@ public class CiudadDAO extends Conexion{
             super.conectar();
             super.state.executeUpdate("UPDATE ciudad set nombre='" + ciudad.getNombre()+ 
                     "'," + " region_id=" +ciudad.getRegionId()+ " WHERE id =" + ciudad.getId() + ";");
+            con.close();
         } catch(Exception ex) {
             ex.printStackTrace();
         }
@@ -75,6 +76,7 @@ public class CiudadDAO extends Conexion{
         try {
             super.conectar();
             entero = state.executeUpdate("DELETE FROM ciudad WHERE id = " + id + ";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

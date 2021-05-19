@@ -65,6 +65,7 @@ public class MetodoPagoDAO extends Conexion {
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM metodo_pago WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

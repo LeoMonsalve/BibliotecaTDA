@@ -28,6 +28,7 @@ public class DireccionDAO extends Conexion {
                     ", '" + direccion.getCalle() + "', " + direccion.getNumero() 
                     + ", " + direccion.getComunaId() +
                     ", " + direccion.getListaDirecciones() + ");");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -72,6 +73,7 @@ public class DireccionDAO extends Conexion {
          "', numero=" + direccion.getNumero() + ", comuna_id= "
         + direccion.getComunaId() + ", lista_direcciones_id=" + direccion.getListaDirecciones() +
                     " where id=" + direccion.getId() + ";");
+            con.close();
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -82,6 +84,7 @@ public class DireccionDAO extends Conexion {
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM direccion WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

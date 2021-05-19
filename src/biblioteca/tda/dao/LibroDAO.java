@@ -132,6 +132,7 @@ public class LibroDAO extends Conexion {
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM libro WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

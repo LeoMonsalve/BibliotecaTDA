@@ -73,6 +73,7 @@ public class CompraDAO extends Conexion{
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM compra WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

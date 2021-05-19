@@ -81,6 +81,7 @@ public class FacturaDAO extends Conexion {
                     + ", precio_iva=" + factura.getPrecioIva() + ", costo_iva=" + factura.getCostoIva() 
                     + ", fecha_compra='" + factura.getFechaCompra() + "', distribuidor_id=" + factura.getDistribuidorId() 
                     + ", metodo_pago_id=" + factura.getMetodoPagoId() + " WHERE id=" + factura.getId() + ";");
+            con.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -91,6 +92,7 @@ public class FacturaDAO extends Conexion {
         try {
             super.conectar();
             entero = state.executeUpdate("DELETE FROM factura WHERE id = " + id + ";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

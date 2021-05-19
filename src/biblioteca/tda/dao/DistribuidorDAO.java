@@ -92,6 +92,7 @@ public class DistribuidorDAO extends Conexion {
                     + distribuidor.getAnoDistribucion() + "', direccion_id=" 
                     + distribuidor.getDireccionId() + ", telefono_id=" 
                     + distribuidor.getTelefonoId() + ";");
+            con.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -102,6 +103,7 @@ public class DistribuidorDAO extends Conexion {
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM distribuidores WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

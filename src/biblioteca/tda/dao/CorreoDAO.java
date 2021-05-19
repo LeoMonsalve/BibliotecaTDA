@@ -65,6 +65,7 @@ public class CorreoDAO extends Conexion {
             super.conectar();
             super.state.executeUpdate("UPDATE correo set correo='" + correo.getCorreo() + 
                     "'," + " lista_correo=" +correo.getListaCorreo()+ " WHERE id =" + correo.getId() + ";");
+            con.close();
         } catch(Exception ex) {
             ex.printStackTrace();
         }
@@ -75,6 +76,7 @@ public class CorreoDAO extends Conexion {
         try {
             super.conectar();
             entero = state.executeUpdate("DELETE FROM correo WHERE id = " + id + ";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

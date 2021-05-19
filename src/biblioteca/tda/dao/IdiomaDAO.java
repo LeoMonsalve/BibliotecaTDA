@@ -66,6 +66,7 @@ public class IdiomaDAO extends Conexion {
             super.conectar();
             super.state.executeUpdate("UPDATE idioma set idioma='" + idioma.getIdioma() + 
                     "' WHERE id =" + idioma.getId() + ";");
+            con.close();
         } catch(Exception ex) {
             ex.printStackTrace();
         }
@@ -76,6 +77,7 @@ public class IdiomaDAO extends Conexion {
         try {
             super.conectar();
             entero = state.executeUpdate("DELETE FROM idioma WHERE id = " + id + ";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

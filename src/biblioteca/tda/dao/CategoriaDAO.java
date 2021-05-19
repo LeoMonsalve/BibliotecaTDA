@@ -77,6 +77,7 @@ public class CategoriaDAO extends Conexion{
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM categoria WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

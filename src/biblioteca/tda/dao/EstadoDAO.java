@@ -67,6 +67,7 @@ public class EstadoDAO extends Conexion{
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM estado WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

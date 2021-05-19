@@ -65,6 +65,7 @@ public class ComunaDAO extends Conexion {
             super.conectar();
             super.state.executeUpdate("UPDATE comuna set nombre='" + comuna.getNombre()+ 
                     "'," + " ciudad_id=" +comuna.getCiudadId()+ " WHERE id =" + comuna.getId() + ";");
+            con.close();
         } catch(Exception ex) {
             ex.printStackTrace();
         }
@@ -75,6 +76,7 @@ public class ComunaDAO extends Conexion {
         try {
             super.conectar();
             entero = state.executeUpdate("DELETE FROM comuna WHERE id = " + id + ";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

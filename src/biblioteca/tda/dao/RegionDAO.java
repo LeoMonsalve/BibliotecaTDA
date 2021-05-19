@@ -64,6 +64,7 @@ public class RegionDAO extends Conexion {
             super.conectar();
             super.state.executeUpdate("UPDATE region set nombre='" + region.getNombre()+ 
                     "'," +  " WHERE id =" + region.getId() + ";");
+            con.close();
         } catch(Exception ex) {
             ex.printStackTrace();
         }
@@ -74,6 +75,7 @@ public class RegionDAO extends Conexion {
         try {
             super.conectar();
             entero = state.executeUpdate("DELETE FROM region WHERE id = " + id + ";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

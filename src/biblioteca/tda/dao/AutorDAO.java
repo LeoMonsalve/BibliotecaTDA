@@ -30,7 +30,7 @@ public class AutorDAO extends Conexion {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+    } 
 
     public Autor buscar(int id) throws SQLException {
         super.conectar();
@@ -66,6 +66,7 @@ public class AutorDAO extends Conexion {
             super.conectar();
             super.state.executeUpdate("UPDATE autor set nombre='" + autor.getNombre()
                     + "', apellido='" + autor.getNombre() + "' where id=" + autor.getId() + ";");
+            con.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -76,6 +77,7 @@ public class AutorDAO extends Conexion {
         try {
             super.conectar();
             entero = state.executeUpdate("DELETE FROM autor WHERE id = " + id + ";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

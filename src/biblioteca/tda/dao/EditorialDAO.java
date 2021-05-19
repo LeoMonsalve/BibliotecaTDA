@@ -66,6 +66,7 @@ public class EditorialDAO extends Conexion{
         try {
             super.conectar();
             entero= state.executeUpdate("Delete FROM editorial WHERE id="+ id +";");
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
