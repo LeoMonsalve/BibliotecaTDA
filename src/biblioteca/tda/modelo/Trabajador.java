@@ -9,7 +9,7 @@ package biblioteca.tda.modelo;
  *
  * @author henrry
  */
-public class Cliente {
+public class Trabajador {
     private int id;
     private String rut;
     private String nombre;
@@ -20,10 +20,10 @@ public class Cliente {
     private int listaTelefonosId;
     private int listaCorreoId;
 
-    public Cliente() {
+    public Trabajador() {
     }
 
-    public Cliente(int id, String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, int listaDireccionesId, int listaTelefonosId, int listaCorreoId) {
+    public Trabajador(int id, String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, int listaDireccionesId, int listaTelefonosId, int listaCorreoId) {
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
@@ -109,6 +109,8 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", rut=" + rut + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", listaDireccionesId=" + listaDireccionesId + ", listaTelefonosId=" + listaTelefonosId + ", listaCorreoId=" + listaCorreoId + '}';
+        return "Trabajador{" + "id=" + id + ", rut=" + rut + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", listaDireccionesId=" + listaDireccionesId + ", listaTelefonosId=" + listaTelefonosId + ", listaCorreoId=" + listaCorreoId + '}';
     }
+    
+    
 }
