@@ -1,3 +1,4 @@
+package biblioteca.tda.dao;
 
 import biblioteca.tda.dao.Conexion;
 import biblioteca.tda.modelo.Editorial;
@@ -55,7 +56,8 @@ public class EditorialDAO extends Conexion{
     public void modificar(Editorial editorial){
       try {
         super.conectar();
-        super.state.executeQuery("UPDATE editorial set nombre='" + editorial.getNombre() + "' where id="+ editorial.getId()+";");
+        super.state.executeUpdate("UPDATE editorial set nombre='" + editorial.getNombre() + 
+                "' where id="+ editorial.getId()+";");
         con.close();
     } catch (Exception e) {
          e.printStackTrace();

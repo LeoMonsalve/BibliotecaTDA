@@ -1,3 +1,5 @@
+package biblioteca.tda.modelo;
+
 public class MetodoPago {
     private int id;
     private String tipoPago;

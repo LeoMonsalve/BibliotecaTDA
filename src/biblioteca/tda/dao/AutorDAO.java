@@ -65,7 +65,7 @@ public class AutorDAO extends Conexion {
         try {
             super.conectar();
             super.state.executeUpdate("UPDATE autor set nombre='" + autor.getNombre()
-                    + "', apellido='" + autor.getNombre() + "' where id=" + autor.getId() + ";");
+                    + "', apellido='" + autor.getApellido()+ "' where id=" + autor.getId() + ";");
             con.close();
         } catch (Exception ex) {
             ex.printStackTrace();

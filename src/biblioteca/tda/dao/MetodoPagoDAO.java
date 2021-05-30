@@ -1,5 +1,8 @@
+package biblioteca.tda.dao;
+
 
 import biblioteca.tda.dao.Conexion;
+import biblioteca.tda.modelo.MetodoPago;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -52,7 +55,7 @@ public class MetodoPagoDAO extends Conexion {
     public void modificar(MetodoPago metodoPago){
       try {
         super.conectar();
-        super.state.executeQuery("UPDATE metodo_pago set tipo_pago='" + metodoPago.getTipoPago() + 
+        super.state.executeUpdate("UPDATE metodo_pago set tipo_pago='" + metodoPago.getTipoPago() + 
         "' where id =" +  metodoPago.getId() + ";");
         con.close();
     } catch (Exception e) {

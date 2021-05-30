@@ -44,6 +44,19 @@ public class CiudadDAO extends Conexion{
         return ciudad;
     }
     
+    public Ciudad buscar(String nombreCiudad) throws SQLException {
+        super.conectar();
+        Ciudad ciudad = new Ciudad();
+        ResultSet result = state.executeQuery("SELECT * FROM ciudad WHERE nombre LIKE '%" + nombreCiudad + "%' ;");
+        
+        while (result.next()) {
+            ciudad.setId((int) result.getObject(1));
+            ciudad.setNombre((String) result.getObject(2));
+            ciudad.setRegionId((int)result.getObject(3));
+        }
+        return ciudad;
+    }
+    
     public ArrayList<Ciudad> listar() throws SQLException {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM ciudad");

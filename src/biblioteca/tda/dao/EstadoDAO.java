@@ -1,13 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package biblioteca.tda.dao;
 
-import biblioteca.tda.dao.Conexion;
 import biblioteca.tda.modelo.Estado;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class EstadoDAO extends Conexion{
-   
-   
+/**
+ *
+ * @author henrr
+ */
+public class EstadoDAO extends Conexion {
+    
     public EstadoDAO(){
         super();
     }
@@ -29,7 +37,7 @@ public class EstadoDAO extends Conexion{
         super.conectar();
         Estado estado = new Estado();
         ResultSet result = state.executeQuery(
-            "SELECT * FROM estado WHERE id ='" + id + "' ;");
+            "SELECT * FROM estado WHERE id =" + id + " ;");
         while(result.next()){
             estado.setId((int) result.getObject(1));
             estado.setDescripcion((String) result.getObject(2));
@@ -55,7 +63,7 @@ public class EstadoDAO extends Conexion{
     public void modificar(Estado estado){
       try {
         super.conectar();
-        super.state.executeQuery("UPDATE estado set descripcion='" + estado.getDescripcion() + "' where id= " + estado.getId()+ ";");
+        super.state.executeUpdate("UPDATE estado set descripcion='" + estado.getDescripcion() + "' where id= " + estado.getId()+ ";");
         con.close();
     } catch (Exception e) {
          e.printStackTrace();

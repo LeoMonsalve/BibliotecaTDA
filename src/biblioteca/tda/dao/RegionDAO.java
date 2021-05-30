@@ -43,6 +43,19 @@ public class RegionDAO extends Conexion {
         return region;
     }
     
+    public Region buscar(String nombre) throws SQLException {
+        super.conectar();
+        Region region = new Region();
+        ResultSet result = state.executeQuery("SELECT * FROM region WHERE nombre LIKE '%" + nombre + "%' ;");
+        
+        while (result.next()) {
+            region.setId((int) result.getObject(1));
+            region.setNombre((String) result.getObject(2));
+            
+        }
+        return region;
+    }
+    
     public ArrayList<Region> listar() throws SQLException {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM region");
@@ -62,8 +75,8 @@ public class RegionDAO extends Conexion {
     public void modificar(Region region) throws SQLException {
         try {
             super.conectar();
-            super.state.executeUpdate("UPDATE region set nombre='" + region.getNombre()+ 
-                    "'," +  " WHERE id =" + region.getId() + ";");
+            super.state.executeUpdate("UPDATE region set nombre='" + region.getNombre() + 
+                    "' WHERE id =" + region.getId() + ";");
             con.close();
         } catch(Exception ex) {
             ex.printStackTrace();

@@ -44,6 +44,19 @@ public class ComunaDAO extends Conexion {
         return comuna;
     }
     
+    public Comuna buscar(String nombreComuna) throws SQLException {
+        super.conectar();
+        Comuna comuna= new Comuna();
+        ResultSet result = state.executeQuery("SELECT * FROM comuna WHERE nombre LIKE = '%" + nombreComuna + "%' ;");
+        
+        while (result.next()) {
+            comuna.setId((int) result.getObject(1));
+            comuna.setNombre((String) result.getObject(2));
+            comuna.setCiudadId((int)result.getObject(3));
+        }
+        return comuna;
+    }
+    
     public ArrayList<Comuna> listar() throws SQLException {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM comuna");

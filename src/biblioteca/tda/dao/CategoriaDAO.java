@@ -6,19 +6,17 @@
 package biblioteca.tda.dao;
 
 import biblioteca.tda.modelo.Categoria;
-import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
  *
- * @author leone
+ * @author henrr
  */
-public class CategoriaDAO extends Conexion{
-    
-    public CategoriaDAO(){
+public class CategoriaDAO extends Conexion {
+
+    public CategoriaDAO() {
         super();
     }
     
@@ -39,7 +37,7 @@ public class CategoriaDAO extends Conexion{
         super.conectar();
         Categoria categoria = new Categoria();
         ResultSet result = state.executeQuery(
-            "SELECT * FROM caterogia WHERE id ='" + id + "' ;");
+            "SELECT * FROM categoria WHERE id ='" + id + "' ;");
         while(result.next()){
             categoria.setId((int) result.getObject(1));
             categoria.setTipo((String) result.getObject(2));

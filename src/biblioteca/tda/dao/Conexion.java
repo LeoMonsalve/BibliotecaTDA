@@ -20,12 +20,12 @@ public class Conexion {
     public Statement state;
     private String jbdc = "jdbc:mysql://localhost:3306/biblioteca";
     private String username = "root";
-    private String password = "Zxcvbnm,";
+    private String password = "root";
     
 
     public void conectar() {
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(jbdc, username, password);
             state = con.createStatement();
         } catch (Exception ex) {
