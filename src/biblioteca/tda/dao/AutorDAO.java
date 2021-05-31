@@ -19,7 +19,7 @@ public class AutorDAO extends Conexion {
     public AutorDAO() {
         super();
     }
-
+    //insertar valores en bbdd
     public void insertar(Autor autor) {
         try {
             super.conectar();
@@ -31,9 +31,11 @@ public class AutorDAO extends Conexion {
             ex.printStackTrace();
         }
     } 
-
+    
+    //buscamos autor por ID en BBDD
     public Autor buscar(int id) throws SQLException, Exception {
         super.conectar();
+        //creamos objeto autor para tomar los valores 
         Autor autor = new Autor();
         ResultSet result = state.executeQuery("SELECT * FROM autor WHERE id = '" + id + "' ;");
 
@@ -45,12 +47,13 @@ public class AutorDAO extends Conexion {
         return autor;
     }
     
+    //Listamos los valores de la tabla Autor
     public ArrayList<Autor> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM autor");
         
         ArrayList<Autor> autores = new ArrayList<Autor>();
-        
+        //creamos un objeto autores para guardar los valores de autor.
         while(result.next()) {
             Autor autor = new Autor();
             autor.setId((int) result.getObject(1));
@@ -58,9 +61,10 @@ public class AutorDAO extends Conexion {
             autor.setApellido((String) result.getObject(3));
             autores.add(autor);
         }
+        //retornamos el objeto autores quien ya contiene los valores de autor.
         return autores;
     }
-    
+    //creamos el metodo modificar
     public void modificar(Autor autor) throws SQLException {
         try {
             super.conectar();
@@ -71,7 +75,7 @@ public class AutorDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //creamos metodo Eliminar.
     public int eliminar(int id) {
         int entero = 0;
         try {

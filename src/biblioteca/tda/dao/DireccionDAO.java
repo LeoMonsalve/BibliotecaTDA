@@ -19,7 +19,7 @@ public class DireccionDAO extends Conexion {
     public DireccionDAO() {
         super();
     }
-    
+    //Implementamos metodo insertar 
     public void insertar(Direccion direccion) {
         try {
             super.conectar();
@@ -32,9 +32,10 @@ public class DireccionDAO extends Conexion {
             e.printStackTrace();
         }
     }
-    
+    //buscamos una direccion por ID 
     public Direccion buscar(int id) throws SQLException, Exception {
         super.conectar();
+        //creamos nuevo objeto que tome los valores
         Direccion direccion = new Direccion();
         ResultSet result = state.executeQuery(
             "SELECT * FROM direccion WHERE id ='" + id + "' ;");
@@ -47,7 +48,7 @@ public class DireccionDAO extends Conexion {
         }
         return direccion;
     }
-    
+    //Creamos metodo que nos liste todas las direcciones
     public ArrayList<Direccion> listarDirecciones() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM direcciones");
@@ -62,9 +63,10 @@ public class DireccionDAO extends Conexion {
             direccion.setListaDirecciones((int) result.getObject(5));
             direcciones.add(direccion);
         }
+        //retornamos objeto con todas las direcciones.
         return direcciones;
     }
-    
+    //creamos metodo modificar 
     public void modificar(Direccion direccion) {
         try {
             super.conectar();
@@ -77,7 +79,7 @@ public class DireccionDAO extends Conexion {
             e.printStackTrace();
         }
     }
-    
+    //creamos metodo eliminar
     public int eliminar(int id){
         int entero=0;
         try {

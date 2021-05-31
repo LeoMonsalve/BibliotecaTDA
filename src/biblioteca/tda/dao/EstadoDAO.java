@@ -19,7 +19,7 @@ public class EstadoDAO extends Conexion {
     public EstadoDAO(){
         super();
     }
-    
+    //implementamos metodo insertar
     public void insertar(Estado estado){
             try {
             super.conectar();
@@ -32,9 +32,10 @@ public class EstadoDAO extends Conexion {
             e.printStackTrace();
         }
     }
-
+    //creamos metodo para buscar por ID 
     public Estado buscar(int id) throws SQLException, Exception{
         super.conectar();
+        //creamos nuevo objeto para tomar los valores 
         Estado estado = new Estado();
         ResultSet result = state.executeQuery(
             "SELECT * FROM estado WHERE id =" + id + " ;");
@@ -44,11 +45,12 @@ public class EstadoDAO extends Conexion {
         }
         return estado;
     }
-
+//implementamos metodo para listar todos los estados 
     public ArrayList<Estado> listarEstados() throws SQLException, Exception{
 
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM estado");
+        //creamos nuevo objeto que tomara todos los estados.
         ArrayList<Estado> estados = new ArrayList<Estado>();
 
         while(result.next()){
@@ -56,10 +58,14 @@ public class EstadoDAO extends Conexion {
 
             estado.setId((int)result.getObject(1));
             estado.setDescripcion((String)result.getObject(2));
+            //agreggamos los valores al nuevo objeto
             estados.add(estado);
         }
+        //retornamos el objeto con todos los estados.
         return estados;
     }
+    
+    // implementamos metodo para modificar los estados
     public void modificar(Estado estado){
       try {
         super.conectar();
@@ -69,7 +75,7 @@ public class EstadoDAO extends Conexion {
          e.printStackTrace();
       }  
     }
-    
+    //iimplementamos metodo para eliminar estado.
     public int eliminar(int id){
         int entero=0;
         try {

@@ -22,7 +22,7 @@ public class Conexion {
     private String username = "root";
     private String password = "root";
     
-
+//creamos metodo para conectarnos a la BBDD
     public void conectar() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -32,7 +32,7 @@ public class Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //implementamos metodo para que nos devuelva el ultimo valor ID ingresado.
     public  int ultimoId(String tabla) throws SQLException {
         conectar();
         int ultimoId=0;

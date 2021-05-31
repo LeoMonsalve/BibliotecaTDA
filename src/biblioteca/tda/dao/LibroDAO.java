@@ -22,7 +22,7 @@ public class LibroDAO extends Conexion {
     public LibroDAO() {
         super();
     }
-
+//Creamos metodo para insertar un nuevo libro
     public void insertar(Libro libro) {
         try {
             super.conectar();
@@ -40,7 +40,7 @@ public class LibroDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-
+//creamos metodo para buscar un libro por su ID 
     public Libro buscar(int id) throws SQLException, Exception {
         super.conectar();
         Libro libro = new Libro();
@@ -108,11 +108,13 @@ public class LibroDAO extends Conexion {
             libro.setIdioma((int) result.getObject(10));
             libro.setEditorial((int) result.getObject(11));
             libro.setAutor((int) result.getObject(12));
+            //guardamos los libros en "libros"
             libros.add(libro);
         }
+        //retornamos el nuevo objeto con todos los libros en el.
         return libros;
     }
-
+    //creamos metodo para 
     public void modificar(Libro libro) {
         try {
             super.conectar();
@@ -127,7 +129,7 @@ public class LibroDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //creamos metodo eliminar libro
     public int eliminar(int id){
         int entero=0;
         try {

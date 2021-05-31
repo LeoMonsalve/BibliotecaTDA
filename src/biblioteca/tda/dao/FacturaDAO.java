@@ -19,7 +19,7 @@ public class FacturaDAO extends Conexion {
     public FacturaDAO() {
         super();
     }
-
+//Creamos metodo para insertar una factura
     public void insertar(Factura factura) {
         try {
             super.conectar();
@@ -34,9 +34,10 @@ public class FacturaDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //implementamos metodo que nos busque una factura 
     public Factura buscar(int id) throws SQLException, Exception {
         super.conectar();
+        //creamos nuevo objeto para que tome los valores.
         Factura factura = new Factura();
         ResultSet result = state.executeQuery("SELECT * FROM factura WHERE id = '" + id + "' ;");
         
@@ -52,10 +53,11 @@ public class FacturaDAO extends Conexion {
         }
         return factura;
     }
-    
+    //creamos metodo que nos listará todas la facturas
     public ArrayList<Factura> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM factura");
+        //creamos objeto que guardará todas las facturas
         ArrayList<Factura> facturas = new ArrayList<Factura>();
         
         while(result.next()) {
@@ -68,11 +70,14 @@ public class FacturaDAO extends Conexion {
             factura.setFechaCompra((String) result.getObject(6));
             factura.setDistribuidorId((int) result.getObject(7));
             factura.setMetodoPagoId((int) result.getObject(8));
+            //guardamos las facturas en el nuevo objeto
             facturas.add(factura);
         }
+        //retornamos el nuevo objeto con todas las facturas dentro.
         return facturas;
     }
     
+    //creamos metodo para modificar una factura
     public void modificar(Factura factura) throws SQLException {
         try {
             super.conectar();
@@ -86,6 +91,7 @@ public class FacturaDAO extends Conexion {
             ex.printStackTrace();
         }
     }
+    //creamos metodo para eliminar una factura
     
     public int eliminar(int id) {
         int entero = 0;
