@@ -11,7 +11,7 @@ public class MetodoPagoDAO extends Conexion {
     public MetodoPagoDAO(){
         super();
     }
-    
+    //insertamos el metodo de pago
     public void insertar(MetodoPago metodoPago){
             try {
             super.conectar();
@@ -24,7 +24,7 @@ public class MetodoPagoDAO extends Conexion {
             e.printStackTrace();
         }
     }
-
+    //buscamos un metodo de pago
     public MetodoPago buscar(int id) throws SQLException, Exception{
         super.conectar();
         MetodoPago metodoPago= new MetodoPago();
@@ -36,7 +36,7 @@ public class MetodoPagoDAO extends Conexion {
         }
         return metodoPago;
     }
-
+//creamos metodo que nos lista todos los metodos de pago
     public ArrayList<MetodoPago> listarMetodoPago() throws SQLException, Exception{
 
         super.conectar();
@@ -52,6 +52,7 @@ public class MetodoPagoDAO extends Conexion {
         }
         return metodosPago;
     }
+    //Cremoa metodo mofificar 
     public void modificar(MetodoPago metodoPago){
       try {
         super.conectar();
@@ -62,7 +63,7 @@ public class MetodoPagoDAO extends Conexion {
          e.printStackTrace();
       }  
     }
-    
+    //creamos metodo eliminar
     public int eliminar(int id){
         int entero=0;
         try {

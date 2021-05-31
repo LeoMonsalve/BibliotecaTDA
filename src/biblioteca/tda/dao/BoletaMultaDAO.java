@@ -21,7 +21,7 @@ public class BoletaMultaDAO extends Conexion {
      public BoletaMultaDAO() {
         super();
     }
-
+     //insertamos valores en la BBDD
     public void insertar(BoletaMulta boletaMulta) {
         try {
             super.conectar();
@@ -35,9 +35,12 @@ public class BoletaMultaDAO extends Conexion {
         }
     }
     
+    //Buscamos por ID 
     public BoletaMulta buscar(int id) throws SQLException {
         super.conectar();
+        //creamos nuevo objetos para tomar los valores.
         BoletaMulta bm = new BoletaMulta();
+        //recibimos Date para parsear
         Date fechaNormal= new Date();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String fechaParseada = "";
@@ -55,18 +58,21 @@ public class BoletaMultaDAO extends Conexion {
         return bm;
     }
     
+    //Creamos metodo para listar 
     public ArrayList<BoletaMulta> listar() throws SQLException {
         super.conectar();
+        //creamos objeto para parsear el Date
          Date fechaNormal= new Date();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String fechaParseada = "";
         ResultSet result = state.executeQuery("SELECT * FROM boleta_multa");
-        
+        //creamos nuevo objeto para que contenga los valores de BoletaMulta.
         ArrayList<BoletaMulta> bms = new ArrayList<BoletaMulta>();
         
         while(result.next()) {
             BoletaMulta bm = new BoletaMulta();
              bm.setId((int) result.getObject(1));
+             //recibimos el Date para Parsear
             fechaNormal= (Date) result.getObject(2);
             fechaParseada =df.format(fechaNormal);
             bm.setFecha(fechaParseada);
@@ -74,9 +80,10 @@ public class BoletaMultaDAO extends Conexion {
             bm.setClienteId((int)result.getObject(4));
             bms.add(bm);
         }
+        //retornamos el objeto con los valores agregados.
         return bms;
     }
-    
+    //creamos metodo para modificar 
     public void modificar(BoletaMulta boletaMulta) throws SQLException {
         try {
             super.conectar();
@@ -87,7 +94,7 @@ public class BoletaMultaDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //creamos metodo para eliminar
     public int eliminar(int id) {
         int entero = 0;
         try {

@@ -10,7 +10,7 @@ public class CompraDAO extends Conexion{
         super();
     }
     
-    
+    //creamos metodo insertar 
     public void insertar(Compra compra){
             try {
             super.conectar();
@@ -24,9 +24,10 @@ public class CompraDAO extends Conexion{
             e.printStackTrace();
         }
     } 
-
+    //creamos metodo buscar por ID 
     public Compra buscar(int id) throws SQLException, Exception{
         super.conectar();
+        //Creamos nuevo objeto compra para tomar los valores.
         Compra compra = new Compra();
         ResultSet result = state.executeQuery(
             "SELECT * FROM compra WHERE id ='" + id + "' ;");
@@ -38,11 +39,12 @@ public class CompraDAO extends Conexion{
         }
         return compra;
     }
-
+//creamos metodo para listar las compras 
     public ArrayList<Compra> listarCompras() throws SQLException, Exception{
 
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM compra");
+        //creamos objeto que tendra todas las compras 
         ArrayList<Compra> compras = new ArrayList<Compra>();
 
         while(result.next()){
@@ -52,10 +54,14 @@ public class CompraDAO extends Conexion{
             compra.setFecha((String)result.getObject(2));
             compra.setDistribuidorId((int)result.getObject(3));
             compra.setFacturaId((int)result.getObject(4));
+            //seteamos las compras en el objeto"compras"
             compras.add(compra);
         }
+        //retornamos todas las compras en el objeto compras.
         return compras;
     }
+    
+    //Creamos metodo modificar
     public void modificar(Compra compra){
       try {
         super.conectar();
@@ -67,7 +73,7 @@ public class CompraDAO extends Conexion{
          e.printStackTrace();
       }  
     }
-    
+    //Cremaos metodo eliminar
     public int eliminar(int id){
         int entero=0;
         try {

@@ -19,7 +19,7 @@ public class CategoriaDAO extends Conexion {
     public CategoriaDAO() {
         super();
     }
-    
+    //creamos metodo para insertar
     public void insertar(Categoria categoria){
             try {
             super.conectar();
@@ -32,10 +32,12 @@ public class CategoriaDAO extends Conexion {
             e.printStackTrace();
         }
     }
-
+// buscamos categoria
     public Categoria buscar(int id) throws SQLException, Exception{
         super.conectar();
+        //creamos nuevo objeto para setearle los valores.
         Categoria categoria = new Categoria();
+        
         ResultSet result = state.executeQuery(
             "SELECT * FROM categoria WHERE id ='" + id + "' ;");
         while(result.next()){
@@ -44,22 +46,28 @@ public class CategoriaDAO extends Conexion {
         }
         return categoria;
     }
-
+    //metodo para Listar categorias
     public ArrayList<Categoria> listarCategorias() throws SQLException, Exception{
 
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM categoria");
+        //creamos nuevo objeto que tomara los valores de Categoria
         ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+        
 
         while(result.next()){
+            //creamos objeto categoria para tomar los valores.
             Categoria categoria = new Categoria();
 
             categoria.setId((int)result.getObject(1));
             categoria.setTipo((String)result.getObject(2));
+            //agregamos los valores al nuevo array
             categorias.add(categoria);
         }
+        //retornamos el objeto categorias con los valores ya guardados.
         return categorias;
     }
+    //creamos metodo modificar 
     public void modificar(Categoria categoria){
       try {
         super.conectar();
@@ -70,6 +78,7 @@ public class CategoriaDAO extends Conexion {
          e.printStackTrace();
       }  
     }
+    //creamos metodo eliminar.
     public int eliminar(int id){
         int entero=0;
         try {

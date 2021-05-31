@@ -22,7 +22,7 @@ public class ClienteDAO extends Conexion {
     public ClienteDAO() {
         super();
     }
-    
+    //Creamos metodo para insertar los valores.
     public void insertar(Cliente cliente) {
         try {
             super.conectar();
@@ -37,10 +37,12 @@ public class ClienteDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //creamos metodo para buscar por ID 
     public Cliente buscar(int id) throws SQLException, Exception {
         super.conectar();
+        //creamos nuevo objeto para tomar los valores
         Cliente cliente = new Cliente();
+        //creamos objeto date para luego parsearlo
         Date fechaNacimientoDate = new Date();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String fechaNacimiento = "";
@@ -53,7 +55,7 @@ public class ClienteDAO extends Conexion {
             cliente.setNombre((String) result.getObject(3));
             cliente.setApellidoPaterno((String) result.getObject(4));
             cliente.setApellidoMaterno((String) result.getObject(5));
-            
+            //tomamos el Date para parsearlo.
             fechaNacimientoDate = (Date) result.getObject(6);
             fechaNacimiento = df.format(fechaNacimientoDate);
             cliente.setFechaNacimiento(fechaNacimiento);
@@ -65,11 +67,13 @@ public class ClienteDAO extends Conexion {
         return cliente;
     }
     
+    //listammos los clientes 
     public ArrayList<Cliente> listarClientes() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM cliente");
-        
+        //creamos objeto clientes para que tome todos los clientes
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+          //creamos objeto date para luego parsearlo
         Date fechaNacimientoDate = new Date();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String fechaNacimiento = "";
@@ -81,18 +85,20 @@ public class ClienteDAO extends Conexion {
             cliente.setNombre((String) result.getObject(3));
             cliente.setApellidoPaterno((String) result.getObject(4));
             cliente.setApellidoMaterno((String) result.getObject(5));
-            
+              //creamos objeto date para luego parsearlo
             fechaNacimientoDate = (Date) result.getObject(6);
             fechaNacimiento = df.format(fechaNacimientoDate);
             cliente.setFechaNacimiento(fechaNacimiento);
             cliente.setListaDireccionesId((int) result.getObject(7));
             cliente.setListaTelefonosId((int) result.getObject(8));
             cliente.setListaCorreoId((int) result.getObject(9));
+            //añadimos los valores al nuevo objeto
             clientes.add(cliente);
         }
+        //retornamos el objeto clientes con todos los clientes.
         return clientes;      
     }
-    
+    //creamos metodo modificar
     public void modificar(Cliente cliente) {
         try {
             super.conectar();
@@ -109,7 +115,7 @@ public class ClienteDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //creamos metodo eliminar
     public int eliminar(int id){
         int entero=0;
         try {

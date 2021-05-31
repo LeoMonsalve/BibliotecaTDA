@@ -23,7 +23,7 @@ public class ArriendoDAO extends Conexion {
     public ArriendoDAO() {
         super();
     }
-    
+    //insertar valores en bbdd
     public void insertar(Arriendo arriendo) {
         try {
             super.conectar();
@@ -38,7 +38,7 @@ public class ArriendoDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //buscando por id en bbdd
     public Arriendo buscar(int id) throws SQLException {
         super.conectar();
         Arriendo arriendo = new Arriendo();
@@ -68,7 +68,7 @@ public class ArriendoDAO extends Conexion {
         }
         return arriendo;
     }
-    
+    //metodo para listar 
     public ArrayList<Arriendo> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM arriendo");
@@ -103,6 +103,7 @@ public class ArriendoDAO extends Conexion {
         return arriendos;  
     }
     
+    //metodo para modificiar
     public void modificar(Arriendo arriendo) {
         try {
             super.conectar();
@@ -118,7 +119,7 @@ public class ArriendoDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //metodo para eliminar
     public int eliminar(int id){
         int entero=0;
         try {

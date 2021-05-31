@@ -22,7 +22,7 @@ public class DistribuidorDAO extends Conexion {
     public DistribuidorDAO() {
         super();
     }
-
+//creamos metodo para insertar valores 
     public void insertar(Distribuidor distribuidor) {
         try {
             super.conectar();
@@ -36,10 +36,11 @@ public class DistribuidorDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-
+    //implementamos metodo para buscar por ID 
     public Distribuidor buscar(int id) throws SQLException, Exception {
         super.conectar();
         Distribuidor distribuidor = new Distribuidor();
+        //creamos objeto date para luego parsear
         Date fechaAnoDistribucion = new Date();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); // variable para castear sql Date a String
         String anoDistribucion = "";
@@ -50,6 +51,7 @@ public class DistribuidorDAO extends Conexion {
             distribuidor.setId((int) result.getObject(1));
             distribuidor.setRut((String) result.getObject(2));
             distribuidor.setNombreEmpresa((String) result.getObject(3));
+            //tomamos el objeto date para parsearlo
             fechaAnoDistribucion = (Date) result.getObject(4);
             anoDistribucion = df.format(fechaAnoDistribucion);
             distribuidor.setAnoDistribucion(anoDistribucion);
@@ -58,12 +60,13 @@ public class DistribuidorDAO extends Conexion {
         }
         return distribuidor;
     }
-
+//Creamos metodo que nos lista todos los Distribuidores
     public ArrayList<Distribuidor> listarDistribuidores() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM distribuidor");
 
         ArrayList<Distribuidor> distribuidores = new ArrayList<Distribuidor>();
+         //creamos objeto date para luego parsear
         Date fechaAnoDistribucion = new Date();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); // variable para castear sql Date a String
         String anoDistribucion = "";
@@ -73,6 +76,7 @@ public class DistribuidorDAO extends Conexion {
             distribuidor.setId((int) result.getObject(1));
             distribuidor.setRut((String) result.getObject(2));
             distribuidor.setNombreEmpresa((String) result.getObject(3));
+             //tomamos el objeto date para parsearlo
             fechaAnoDistribucion = (Date) result.getObject(4);
             anoDistribucion = df.format(fechaAnoDistribucion);
             distribuidor.setAnoDistribucion(anoDistribucion);
@@ -82,7 +86,7 @@ public class DistribuidorDAO extends Conexion {
         }
         return distribuidores;
     }
-    
+    //implementamos el metodo modificar
     public void modificar(Distribuidor distribuidor) {
         try {
             super.conectar();
@@ -97,7 +101,7 @@ public class DistribuidorDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    //creamos metodo para eliminar.
     public int eliminar(int id){
         int entero=0;
         try {
