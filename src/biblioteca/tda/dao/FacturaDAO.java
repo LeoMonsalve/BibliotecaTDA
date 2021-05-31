@@ -35,7 +35,7 @@ public class FacturaDAO extends Conexion {
         }
     }
     
-    public Factura buscar(int id) throws SQLException {
+    public Factura buscar(int id) throws SQLException, Exception {
         super.conectar();
         Factura factura = new Factura();
         ResultSet result = state.executeQuery("SELECT * FROM factura WHERE id = '" + id + "' ;");

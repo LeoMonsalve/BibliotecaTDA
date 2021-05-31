@@ -30,7 +30,7 @@ public class RegionDAO extends Conexion {
         }
     }
     
-    public Region buscar(int id) throws SQLException {
+    public Region buscar(int id) throws SQLException, Exception {
         super.conectar();
         Region region = new Region();
         ResultSet result = state.executeQuery("SELECT * FROM region WHERE id = '" + id + "' ;");
@@ -43,7 +43,7 @@ public class RegionDAO extends Conexion {
         return region;
     }
     
-    public Region buscar(String nombre) throws SQLException {
+    public Region buscar(String nombre) throws SQLException, Exception {
         super.conectar();
         Region region = new Region();
         ResultSet result = state.executeQuery("SELECT * FROM region WHERE nombre LIKE '%" + nombre + "%' ;");
@@ -56,7 +56,7 @@ public class RegionDAO extends Conexion {
         return region;
     }
     
-    public ArrayList<Region> listar() throws SQLException {
+    public ArrayList<Region> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM region");
         

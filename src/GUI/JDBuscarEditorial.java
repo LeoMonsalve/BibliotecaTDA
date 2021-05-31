@@ -8,6 +8,8 @@ package GUI;
 import biblioteca.tda.dao.EditorialDAO;
 import biblioteca.tda.modelo.Editorial;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -165,10 +167,15 @@ public class JDBuscarEditorial extends javax.swing.JDialog {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        editorial.setId(Integer.parseInt(txtIdEditorial.getText()));
-        editorial.setNombre(txtNombreEditorial.getText());
-        sw=1;
+        
+        try {
+            editorial.setId(Integer.parseInt(txtIdEditorial.getText()));
+            editorial.setNombre(txtNombreEditorial.getText());
+            sw=1;
         this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void tblEditorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEditorialMouseClicked

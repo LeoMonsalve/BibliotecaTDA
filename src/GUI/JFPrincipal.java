@@ -116,14 +116,13 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        JFLibro jfLibro = new JFLibro();
-        jfLibro.setVisible(true);
+
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void JMAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMAgregarLibroActionPerformed
         // TODO add your handling code here:
-        JFLibro jfLibro = new JFLibro();
-        jfLibro.setVisible(true);
+
     }//GEN-LAST:event_JMAgregarLibroActionPerformed
 
     private void jMenuIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIdiomaActionPerformed

@@ -8,6 +8,8 @@ package GUI;
 import biblioteca.tda.dao.AutorDAO;
 import biblioteca.tda.modelo.Autor;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -153,11 +155,16 @@ public class JDBuscarAutor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarAutorActionPerformed
-        // TODO add your handling code here:
-        autor.setId(Integer.parseInt(txtIdAutor.getText()));
-        autor.setNombre(txtNombreAutor.getText());
-        sw=1;
-        this.setVisible(false);
+        try {
+            // TODO add your handling code here:
+            autor.setId(Integer.parseInt(txtIdAutor.getText()));
+            autor.setNombre(txtNombreAutor.getText());
+            autor.setApellido(txtApellidoAutor.getText());
+            sw=1;
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_btnAceptarAutorActionPerformed
 
     private void btnListarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarAutorActionPerformed

@@ -27,13 +27,14 @@ public class LibroDAO extends Conexion {
         try {
             super.conectar();
             int id = super.ultimoId("libro") + 1;
+    
             super.state.executeUpdate("INSERT INTO libro VALUES (" + id
                     + ", '" + libro.getNumeroSerie() + "', '" + libro.getTitulo()
                     + "', " + libro.getNumeroPaginas() + ", " + libro.getPrecioReferencia()
                     + ", '" + libro.getAnoLanzamiento() + "', '" + libro.getPublicacion()
-                    + "', " + libro.getCategoria() + ", " + libro.getEstado()
-                    + ", " + libro.getIdioma() + ", " + libro.getEditorial()
-                    + ", " + libro.getAutor() + ");");
+                    + "', " + libro.getCategoria() + ", " + libro.getAutor()
+                    + ", " + libro.getEditorial()+ ", " + libro.getIdioma()
+                    + ", " + libro.getEstado() + ");");
             con.close();
         } catch (Exception ex) {
             ex.printStackTrace();

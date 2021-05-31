@@ -31,7 +31,7 @@ public class ComunaDAO extends Conexion {
         }
     }
     
-    public Comuna buscar(int id) throws SQLException {
+    public Comuna buscar(int id) throws SQLException, Exception {
         super.conectar();
         Comuna comuna= new Comuna();
         ResultSet result = state.executeQuery("SELECT * FROM comuna WHERE id = '" + id + "' ;");
@@ -44,7 +44,7 @@ public class ComunaDAO extends Conexion {
         return comuna;
     }
     
-    public Comuna buscar(String nombreComuna) throws SQLException {
+    public Comuna buscar(String nombreComuna) throws SQLException, Exception {
         super.conectar();
         Comuna comuna= new Comuna();
         ResultSet result = state.executeQuery("SELECT * FROM comuna WHERE nombre LIKE = '%" + nombreComuna + "%' ;");
@@ -57,7 +57,7 @@ public class ComunaDAO extends Conexion {
         return comuna;
     }
     
-    public ArrayList<Comuna> listar() throws SQLException {
+    public ArrayList<Comuna> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM comuna");
         

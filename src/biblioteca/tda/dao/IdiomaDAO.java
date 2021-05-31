@@ -34,7 +34,7 @@ public class IdiomaDAO extends Conexion {
         }
     }
     
-    public Idioma buscar(int id) throws SQLException {
+    public Idioma buscar(int id) throws SQLException, Exception {
         super.conectar();
         Idioma idioma = new Idioma();
         ResultSet result = state.executeQuery("SELECT * FROM idioma WHERE id = '" + id + "' ;");
@@ -46,7 +46,7 @@ public class IdiomaDAO extends Conexion {
         return idioma;
     }
     
-    public ArrayList<Idioma> listar() throws SQLException {
+    public ArrayList<Idioma> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM idioma");
         

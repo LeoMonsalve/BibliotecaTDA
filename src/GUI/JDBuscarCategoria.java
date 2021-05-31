@@ -8,6 +8,8 @@ package GUI;
 import biblioteca.tda.dao.CategoriaDAO;
 import biblioteca.tda.modelo.Categoria;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -162,6 +164,8 @@ public class JDBuscarCategoria extends javax.swing.JDialog {
                 matrizCategoria[fila][1] = categoria.getTipo();
                 fila++;
             }
+            modelo = new DefaultTableModel(matrizCategoria, titulos);
+            tblCategoria.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -175,12 +179,15 @@ public class JDBuscarCategoria extends javax.swing.JDialog {
     }//GEN-LAST:event_tblCategoriaMouseClicked
 
     private void btnAceptarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarCategoriaActionPerformed
-        // TODO add your handling code here:
-        categoria.setId(Integer.parseInt(txtIdCategoria.getText()));
-        categoria.setTipo(txtTipoCategoria.getText());
-        sw=1;
-        this.setVisible(false);
-        
+        try {
+            // TODO add your handling code here:
+            categoria.setId(Integer.parseInt(txtIdCategoria.getText()));
+            categoria.setTipo(txtTipoCategoria.getText());
+            sw=1;
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_btnAceptarCategoriaActionPerformed
 
     /**

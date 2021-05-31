@@ -7,14 +7,17 @@ package GUI;
 
 import biblioteca.tda.dao.DireccionDAO;
 import biblioteca.tda.modelo.Direccion;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author henrr
  */
 public class JFDireccion extends javax.swing.JFrame {
-
+    String [][] matrizDireccion = new String[100][5];
+    DefaultTableModel modelo;
     /**
      * Creates new form JFDireccion
      */
@@ -48,7 +51,7 @@ public class JFDireccion extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDireccion = new javax.swing.JTable();
         btnAgregarDireccion = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnModificarDireccion = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
 
@@ -110,11 +113,26 @@ public class JFDireccion extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Modificar");
+        btnModificarDireccion.setText("Modificar");
+        btnModificarDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarDireccionActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,7 +167,7 @@ public class JFDireccion extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(130, 130, 130)
-                                .addComponent(jButton1)
+                                .addComponent(btnModificarDireccion)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEliminar)
                                 .addGap(18, 18, 18)
@@ -198,7 +216,7 @@ public class JFDireccion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarDireccion)
-                    .addComponent(jButton1)
+                    .addComponent(btnModificarDireccion)
                     .addComponent(btnEliminar)
                     .addComponent(btnListar))
                 .addGap(28, 28, 28)
@@ -213,14 +231,14 @@ public class JFDireccion extends javax.swing.JFrame {
         // TODO add your handling code here:
         JDBuscarComuna jdBuscarComuna = new JDBuscarComuna(this, true);
         jdBuscarComuna.setVisible(true);
-        while(jdBuscarComuna.sw == 0) {
+        while (jdBuscarComuna.sw == 0) {
             txtIdComuna.setText("");
             txtIdComuna.setText("");
         }
         txtNombreComuna.setText(jdBuscarComuna.comuna.getNombre());
         txtIdComuna.setText(String.valueOf(jdBuscarComuna.comuna.getId()));
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarComunaActionPerformed
 
     private void txtNombreComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreComunaActionPerformed
@@ -236,15 +254,72 @@ public class JFDireccion extends javax.swing.JFrame {
             direccion.setCalle(txtCalleDireccion.getText());
             direccion.setComunaId(Integer.parseInt(txtIdComuna.getText()));
             direccionDAO.insertar(direccion);
+            limpiarControles();
             JOptionPane.showMessageDialog(null, "Direccion ingresada");
-        } catch(Exception e) {
-            
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_btnAgregarDireccionActionPerformed
 
     private void tblDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDireccionMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblDireccionMouseClicked
+
+    private void btnModificarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarDireccionActionPerformed
+        // TODO add your handling code here:
+        DireccionDAO direccionDAO = new DireccionDAO();
+        try {
+            Direccion direccion = new Direccion();
+            direccion.setId(Integer.parseInt(txtIdDireccion.getText()));
+            direccion.setCalle(txtCalleDireccion.getText());
+            direccion.setId(Integer.parseInt(txtIdComuna.getText()));
+            direccion.setNumero(Integer.parseInt(txtNumeroDireccion.getText()));
+            direccionDAO.modificar(direccion);
+
+        } catch (Exception e) {
+
+        }
+
+
+    }//GEN-LAST:event_btnModificarDireccionActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        try {
+            DireccionDAO direccionDAO = new DireccionDAO();
+            if (direccionDAO.eliminar(Integer.parseInt(txtIdDireccion.getText())) != 0) {
+                JOptionPane.showMessageDialog(null, "Direccion Eliminada");
+                limpiarControles();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró direrccion para eliminar");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+        try {
+            int fila = 0;
+            DireccionDAO direccionDAO = new DireccionDAO();
+            String[] titulos = {"ID", "CALLE", "NUMERO", "COMUNA_ID"};
+            ArrayList<Direccion> lista = direccionDAO.listarDirecciones();
+            for(Direccion direccion: lista) {
+                matrizDireccion[fila][0] = String.valueOf(matrizDireccion, titulos);
+            }
+        } catch(Exception e) {
+            
+        }
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    public void limpiarControles() {
+        txtIdComuna.setText("");
+        txtIdDireccion.setText("");
+        txtNombreComuna.setText("");
+        txtCalleDireccion.setText("");
+        txtNumeroDireccion.setText("");
+    }
 
     /**
      * @param args the command line arguments
@@ -287,7 +362,7 @@ public class JFDireccion extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarDireccion;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnListar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnModificarDireccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

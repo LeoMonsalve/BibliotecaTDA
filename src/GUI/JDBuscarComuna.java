@@ -8,6 +8,8 @@ package GUI;
 import biblioteca.tda.dao.ComunaDAO;
 import biblioteca.tda.modelo.Comuna;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -174,12 +176,16 @@ public class JDBuscarComuna extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarComunaActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
             comuna.setId(Integer.parseInt(txtIdComuna.getText()));
             comuna.setNombre(txtNombreComuna.getText());
             comuna.setCiudadId(Integer.parseInt(txtIdCiudad.getText()));
             sw=1;
             this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
 
     }//GEN-LAST:event_btnAceptarComunaActionPerformed
 

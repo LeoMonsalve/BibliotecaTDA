@@ -26,8 +26,7 @@ public class DireccionDAO extends Conexion {
             int id = super.ultimoId("direccion") + 1;
             super.state.executeUpdate("INSERT INTO direccion VALUES (" + id + 
                     ", '" + direccion.getCalle() + "', " + direccion.getNumero() 
-                    + ", " + direccion.getComunaId() +
-                     ");");
+                    + ", " + direccion.getComunaId() + ", NULL);");
             con.close();
         } catch (Exception e) {
             e.printStackTrace();

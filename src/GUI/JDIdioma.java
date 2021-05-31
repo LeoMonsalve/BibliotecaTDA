@@ -16,11 +16,12 @@ import javax.swing.table.DefaultTableModel;
  * @author henrr
  */
 public class JDIdioma extends javax.swing.JDialog {
+
     Idioma idioma = new Idioma();
     public int sw = 0;
-    String [][] matrizIdioma = new String[150][2];
+    String[][] matrizIdioma = new String[150][2];
     DefaultTableModel modelo;
-    
+
     /**
      * Creates new form JDIdioma
      */
@@ -145,10 +146,14 @@ public class JDIdioma extends javax.swing.JDialog {
 
     private void btnAceptarIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarIdiomaActionPerformed
         // TODO add your handling code here:
-        idioma.setId(Integer.parseInt(txtIdIdioma.getText()));
-        idioma.setIdioma(txtIdioma.getText());
-        sw=1;
-        this.setVisible(false);
+        try {
+            idioma.setId(Integer.parseInt(txtIdIdioma.getText()));
+            idioma.setIdioma(txtIdioma.getText());
+            sw = 1;
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_btnAceptarIdiomaActionPerformed
 
     private void btnListarIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarIdiomaActionPerformed
@@ -156,9 +161,9 @@ public class JDIdioma extends javax.swing.JDialog {
         try {
             int fila = 0;
             IdiomaDAO idiomaDao = new IdiomaDAO();
-            String [] titulos = {"ID", "IDIOMA"};
+            String[] titulos = {"ID", "IDIOMA"};
             ArrayList<Idioma> lista = idiomaDao.listar();
-            for(Idioma idioma : lista) {
+            for (Idioma idioma : lista) {
                 matrizIdioma[fila][0] = String.valueOf(idioma.getId());
                 matrizIdioma[fila][1] = idioma.getIdioma();
                 fila++;
@@ -166,7 +171,7 @@ public class JDIdioma extends javax.swing.JDialog {
             modelo = new DefaultTableModel(matrizIdioma, titulos);
             tblIdioma.setModel(modelo);
         } catch (Exception e) {
-             JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnListarIdiomaActionPerformed
 

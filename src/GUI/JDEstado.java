@@ -8,6 +8,8 @@ package GUI;
 import biblioteca.tda.dao.EstadoDAO;
 import biblioteca.tda.modelo.Estado;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -173,9 +175,13 @@ public class JDEstado extends javax.swing.JDialog {
 
     private void btnAceptarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEstadoActionPerformed
         // TODO add your handling code here:
-        int fila = tblEstado.getSelectedRow();
-        txtIdEstado.setText(tblEstado.getValueAt(fila, 0).toString());
-        txtNombreEstado.setText(tblEstado.getValueAt(fila, 1).toString());
+        estado.setId(Integer.parseInt(txtIdEstado.getText()));
+        try {
+            estado.setDescripcion(txtNombreEstado.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(JDEstado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_btnAceptarEstadoActionPerformed
 
     /**

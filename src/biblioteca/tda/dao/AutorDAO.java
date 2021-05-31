@@ -32,7 +32,7 @@ public class AutorDAO extends Conexion {
         }
     } 
 
-    public Autor buscar(int id) throws SQLException {
+    public Autor buscar(int id) throws SQLException, Exception {
         super.conectar();
         Autor autor = new Autor();
         ResultSet result = state.executeQuery("SELECT * FROM autor WHERE id = '" + id + "' ;");
