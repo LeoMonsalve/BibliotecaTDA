@@ -37,8 +37,12 @@ public class Estado {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String descripcion) throws Exception {
+        if (descripcion.trim().length()>0) {
+            this.descripcion = descripcion;
+        }else{
+            throw new Exception("Debe ingresar una descripcion");
+        }
     }
 
     @Override

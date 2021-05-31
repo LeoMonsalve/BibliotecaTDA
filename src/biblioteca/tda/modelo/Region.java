@@ -33,8 +33,12 @@ public class Region {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws Exception {
+        if (nombre.trim().length()>0) {
+             this.nombre = nombre;
+        }else{
+            throw new Exception("Debe ingresar una region");
+        }
     }
 
     @Override

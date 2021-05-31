@@ -39,8 +39,12 @@ public class Direccion {
         return calle;
     }
 
-    public void setCalle(String calle) {
-        this.calle = calle;
+    public void setCalle(String calle) throws Exception {
+        if (calle.trim().length()>0) {
+             this.calle = calle;
+        }else{
+            throw new Exception("Debe ingresar una calle");
+        }
     }
 
     public int getNumero() {

@@ -34,8 +34,13 @@ public class Idioma {
         return idioma;
     }
 
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
+    public void setIdioma(String idioma) throws Exception {
+        if (idioma.trim().length()>0) {
+            this.idioma = idioma;
+            
+        }else{
+            throw new Exception("Debe ingresar un idioma");
+        }
     }
 
     @Override

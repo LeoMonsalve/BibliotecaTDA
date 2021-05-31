@@ -32,8 +32,12 @@ public class Compra {
     }
 
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFecha(String fecha) throws Exception {
+        if (fecha.trim().length()>0) {
+             this.fecha = fecha;
+        }else{
+            throw new Exception("Debe ingresar una fecha");
+        }
     }
 
 

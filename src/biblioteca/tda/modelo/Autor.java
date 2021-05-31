@@ -37,16 +37,24 @@ public class Autor {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws Exception {
+        if (nombre.trim().length()>0) {
+             this.nombre = nombre;
+        }else{
+            throw new Exception("Debe ingresar un nombre");
+        }
     }
 
     public String getApellido() {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellido(String apellido) throws Exception {
+        if (apellido.trim().length()>0) {
+             this.apellido = apellido;
+        }else{
+            throw new Exception("Debe ingresar un apellido");
+        }
     }
 
     @Override

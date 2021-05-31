@@ -33,8 +33,13 @@ public class Categoria {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(String tipo) throws Exception {
+        if (tipo.trim().length()>0) {
+            this.tipo = tipo;
+            
+        }else {
+            throw new Exception("Debe ingresar un tipo");
+        }
     }
 
     @Override

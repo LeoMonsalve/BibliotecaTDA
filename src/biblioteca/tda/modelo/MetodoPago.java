@@ -30,8 +30,12 @@ public class MetodoPago {
     }
 
 
-    public void setTipoPago(String tipoPago) {
-        this.tipoPago = tipoPago;
+    public void setTipoPago(String tipoPago) throws Exception {
+        if (tipoPago.trim().length()>0) {
+             this.tipoPago = tipoPago;
+        }else{
+            throw new Exception("Debe ingresar un tipo de pago");
+        }
     }
 
 

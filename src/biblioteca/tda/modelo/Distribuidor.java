@@ -41,24 +41,36 @@ public class Distribuidor {
         return rut;
     }
 
-    public void setRut(String rut) {
-        this.rut = rut;
+    public void setRut(String rut) throws Exception {
+       if (rut.trim().length()>0) {
+             this.rut = rut;
+        }else{
+            throw new Exception("Debe ingresar un rut");
+        }
     }
 
     public String getNombreEmpresa() {
         return nombreEmpresa;
     }
 
-    public void setNombreEmpresa(String nombreEmpresa) {
-        this.nombreEmpresa = nombreEmpresa;
+    public void setNombreEmpresa(String nombreEmpresa) throws Exception {
+        if (nombreEmpresa.trim().length()>0) {
+             this.nombreEmpresa = nombreEmpresa;
+        }else{
+            throw new Exception("Debe ingresar un nombre de empresa");
+        }
     }
 
     public String getAnoDistribucion() {
         return anoDistribucion;
     }
 
-    public void setAnoDistribucion(String anoDistribucion) {
-        this.anoDistribucion = anoDistribucion;
+    public void setAnoDistribucion(String anoDistribucion) throws Exception {
+        if (anoDistribucion.trim().length()>0) {
+             this.anoDistribucion = anoDistribucion;
+        }else{
+            throw new Exception("Debe ingresar un año de distribucion");
+        }
     }
 
     public int getDireccionId() {

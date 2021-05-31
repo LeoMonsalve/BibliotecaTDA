@@ -54,16 +54,24 @@ public class Libro {
         return numeroSerie;
     }
 
-    public void setNumeroSerie(String numeroSerie) {
-        this.numeroSerie = numeroSerie;
+    public void setNumeroSerie(String numeroSerie) throws Exception {
+        if (numeroSerie.trim().length()>0) {
+             this.numeroSerie = numeroSerie;
+        }else{
+            throw new Exception("Debe ingresar un numero de serie");
+        }
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
+    public void setTitulo(String titulo) throws Exception{
+        if(titulo.trim().length()>0){
         this.titulo = titulo;
+        }else{
+            throw new Exception("Debe ingresar un titulo");
+        }
     }
 
     public int getNumeroPaginas() {
@@ -86,16 +94,27 @@ public class Libro {
         return anoLanzamiento;
     }
 
-    public void setAnoLanzamiento(String anoLanzamiento) {
-        this.anoLanzamiento = anoLanzamiento;
+    public void setAnoLanzamiento(String anoLanzamiento)throws Exception {
+        if(anoLanzamiento.trim().length()>0){
+            this.anoLanzamiento=anoLanzamiento;
+        }else {
+            throw new Exception("Debe ingresar un año de lanzamiento");
+                    
+        }
+        
     }
 
     public String getPublicacion() {
         return publicacion;
     }
 
-    public void setPublicacion(String publicacion) {
-        this.publicacion = publicacion;
+    public void setPublicacion(String publicacion) throws Exception {
+        if(publicacion.trim().length()>0){
+            this.publicacion=publicacion;
+        }else{
+            throw new Exception("Debe ingresar una publicacion");
+        }
+        
     }
 
     public int getCategoria() {
@@ -127,6 +146,8 @@ public class Libro {
     }
 
     public void setEditorial(int editorial) {
+        
+        
         this.editorial = editorial;
     }
 

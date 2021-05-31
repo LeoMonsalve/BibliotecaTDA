@@ -45,8 +45,12 @@ public class Factura {
         return folio;
     }
 
-    public void setFolio(String folio) {
-        this.folio = folio;
+    public void setFolio(String folio) throws Exception {
+        if (folio.trim().length()>0) {
+             this.folio = folio;
+        }else{
+            throw new Exception("Debe ingresar un folio");
+        }
     }
 
     public int getPrecio() {
@@ -77,8 +81,12 @@ public class Factura {
         return fechaCompra;
     }
 
-    public void setFechaCompra(String fechaCompra) {
-        this.fechaCompra = fechaCompra;
+    public void setFechaCompra(String fechaCompra) throws Exception {
+        if (fechaCompra.trim().length()>0) {
+                 this.fechaCompra = fechaCompra;
+         }else{
+            throw new Exception("Debe ingresar una fecha de compra");
+        }
     }
 
     public int getDistribuidorId() {
