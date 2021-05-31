@@ -68,10 +68,13 @@ public class LibroDAO extends Conexion {
             // Parseamos sql Date a String
             publicacion = df.format(fechaPublicacion);
             libro.setCategoria((int) result.getObject(8));
-            libro.setEstado((int) result.getObject(9));
-            libro.setIdioma((int) result.getObject(10));
-            libro.setEditorial((int) result.getObject(11));
-            libro.setAutor((int) result.getObject(12));
+            libro.setAutor((int) result.getObject(9));
+            libro.setEditorial((int) result.getObject(10));
+            libro.setIdioma((int) result.getObject(11));
+            libro.setEstado((int) result.getObject(12));
+            
+            
+            
         }
         return libro;
     }
@@ -103,11 +106,12 @@ public class LibroDAO extends Conexion {
             fechaPublicacion = (Date) result.getObject(7);
             // Parseamos sql Date a String
             publicacion = df.format(fechaPublicacion);
+            libro.setPublicacion(publicacion);
             libro.setCategoria((int) result.getObject(8));
-            libro.setEstado((int) result.getObject(9));
-            libro.setIdioma((int) result.getObject(10));
-            libro.setEditorial((int) result.getObject(11));
-            libro.setAutor((int) result.getObject(12));
+            libro.setAutor((int) result.getObject(9));
+            libro.setEditorial((int) result.getObject(10));
+            libro.setIdioma((int) result.getObject(11));
+            libro.setEstado((int) result.getObject(12));
             libros.add(libro);
         }
         return libros;

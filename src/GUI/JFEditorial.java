@@ -47,7 +47,8 @@ public class JFEditorial extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEditorial = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("EDITORIAL");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Editorial");
@@ -233,7 +234,7 @@ public class JFEditorial extends javax.swing.JFrame {
             editorial.setId(Integer.parseInt(txtIdEditorial.getText()));
             editorial.setNombre(txtNombreEditorial.getText());
             editorialDAO.modificar(editorial);
-            JOptionPane.showMessageDialog(null, "Idioma Modificado");
+            JOptionPane.showMessageDialog(null, "Editorial Modificada");
             limpiarControles();
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());

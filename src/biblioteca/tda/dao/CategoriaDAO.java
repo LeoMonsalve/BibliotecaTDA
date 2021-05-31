@@ -63,7 +63,7 @@ public class CategoriaDAO extends Conexion {
     public void modificar(Categoria categoria){
       try {
         super.conectar();
-        super.state.executeQuery("UPDATE categoria set tipo='" + categoria.getTipo() + "' where id="+
+        super.state.executeUpdate("UPDATE categoria set tipo='" + categoria.getTipo() + "' where id="+
         categoria.getId() + ";");
         con.close();
     } catch (Exception e) {

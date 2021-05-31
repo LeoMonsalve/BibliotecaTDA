@@ -56,7 +56,8 @@ public class JFComuna extends javax.swing.JFrame {
         txtIdComuna = new javax.swing.JTextField();
         txtNombreComuna = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("COMUNA");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Comuna");

@@ -5,17 +5,21 @@
  */
 package GUI;
 
+import static java.awt.Frame.MAXIMIZED_BOTH;
+
 /**
  *
  * @author henrr
  */
 public class JFPrincipal extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form JFPrincipal
      */
     public JFPrincipal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -29,115 +33,216 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        JMAgregarLibro = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuIdioma = new javax.swing.JMenuItem();
-        jMenuEstado = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuCategoria = new javax.swing.JMenuItem();
+        menuIdioma = new javax.swing.JMenuItem();
+        menuEstado = new javax.swing.JMenuItem();
+        menuEditorial = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuLibro = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        menuRegion = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        menuMetodoDePago = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BIBLIOTECA");
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        jMenu1.setText("File");
+        jMenu1.setText("Mantenedores");
 
-        JMAgregarLibro.setText("Libro");
-        JMAgregarLibro.addActionListener(new java.awt.event.ActionListener() {
+        jMenu4.setText("Libro");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMAgregarLibroActionPerformed(evt);
+                jMenu4ActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setText("Buscar Libros");
+        menuCategoria.setText("Categoria");
+        menuCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuCategoria);
+
+        menuIdioma.setText("Idioma");
+        menuIdioma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuIdiomaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuIdioma);
+
+        menuEstado.setText("Estado");
+        menuEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEstadoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuEstado);
+
+        menuEditorial.setText("Editorial");
+        menuEditorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditorialActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuEditorial);
+
+        jMenuItem1.setText("Autor");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        JMAgregarLibro.add(jMenuItem1);
+        jMenu4.add(jMenuItem1);
 
-        jMenu1.add(JMAgregarLibro);
-
-        jMenu3.setText("Idioma");
-
-        jMenuItem2.setText("Agregar");
-        jMenu3.add(jMenuItem2);
-
-        jMenuItem3.setText("Buscar");
-        jMenu3.add(jMenuItem3);
-
-        jMenu1.add(jMenu3);
-
-        jMenu4.setText("Mantenedores");
-
-        jMenuItem4.setText("Libro");
-        jMenu4.add(jMenuItem4);
-
-        jMenuItem5.setText("Categoria");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuLibro.setText("Libro");
+        menuLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuLibroActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
-
-        jMenuIdioma.setText("Idioma");
-        jMenuIdioma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuIdiomaActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuIdioma);
-
-        jMenuEstado.setText("Estado");
-        jMenuEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEstadoActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuEstado);
+        jMenu4.add(menuLibro);
 
         jMenu1.add(jMenu4);
 
-        jMenuBar1.add(jMenu1);
+        jMenu5.setText("Direccion");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        menuRegion.setText("Region");
+        menuRegion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRegionActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menuRegion);
+
+        jMenuItem9.setText("Ciudad");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem9);
+
+        jMenuItem10.setText("Comuna");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem10);
+
+        jMenuItem11.setText("Direccion");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem11);
+
+        jMenu1.add(jMenu5);
+
+        menuMetodoDePago.setText("Metodo de Pago");
+        menuMetodoDePago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMetodoDePagoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuMetodoDePago);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEstadoActionPerformed
         // TODO add your handling code here:
+        JFEstado jfEstado = new JFEstado();
+        jfEstado.setVisible(true);
+    }//GEN-LAST:event_menuEstadoActionPerformed
 
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void JMAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMAgregarLibroActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_JMAgregarLibroActionPerformed
-
-    private void jMenuIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIdiomaActionPerformed
+    private void menuIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuIdiomaActionPerformed
         // TODO add your handling code here:
         JFIdioma jFIdioma = new JFIdioma();
         jFIdioma.setVisible(true);
-    }//GEN-LAST:event_jMenuIdiomaActionPerformed
+    }//GEN-LAST:event_menuIdiomaActionPerformed
 
-    private void jMenuEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEstadoActionPerformed
+    private void menuCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCategoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuEstadoActionPerformed
+        JFCategoria jfCategoria = new JFCategoria();
+        jfCategoria.setVisible(true);
+    }//GEN-LAST:event_menuCategoriaActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void menuRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        JFRegion jfRegion = new JFRegion();
+        jfRegion.setVisible(true);
+    }//GEN-LAST:event_menuRegionActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        JFCiudad jfCiudad = new JFCiudad();
+        jfCiudad.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        // TODO add your handling code here:
+        JFComuna jfComuna = new JFComuna();
+        jfComuna.setVisible(true);
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        JFDireccion jfDireccion = new JFDireccion();
+        jfDireccion.setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void menuEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditorialActionPerformed
+        // TODO add your handling code here:
+        JFEditorial jfEditoral = new JFEditorial();
+        jfEditoral.setVisible(true);
+    }//GEN-LAST:event_menuEditorialActionPerformed
+
+    private void menuLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLibroActionPerformed
+        // TODO add your handling code here:
+        JFLibro jfLibro = new JFLibro();
+        jfLibro.setVisible(true);
+    }//GEN-LAST:event_menuLibroActionPerformed
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        // TODO add your handling code here:
+        JFMetodoPago metodoPago = new JFMetodoPago();
+        metodoPago.setVisible(true);
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        JFComuna jfComuna = new JFComuna();
+        jfComuna.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void menuMetodoDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMetodoDePagoActionPerformed
+        // TODO add your handling code here:
+        JFMetodoPago metodoPago = new JFMetodoPago();
+        metodoPago.setVisible(true);
+    }//GEN-LAST:event_menuMetodoDePagoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        JFAutor autor = new JFAutor();
+        autor.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,18 +280,20 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu JMAgregarLibro;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuEstado;
-    private javax.swing.JMenuItem jMenuIdioma;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem menuCategoria;
+    private javax.swing.JMenuItem menuEditorial;
+    private javax.swing.JMenuItem menuEstado;
+    private javax.swing.JMenuItem menuIdioma;
+    private javax.swing.JMenuItem menuLibro;
+    private javax.swing.JMenuItem menuMetodoDePago;
+    private javax.swing.JMenuItem menuRegion;
     // End of variables declaration//GEN-END:variables
 }

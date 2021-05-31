@@ -9,13 +9,19 @@ import biblioteca.tda.dao.LibroDAO;
 import biblioteca.tda.modelo.Libro;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author henrr
  */
 public class JFLibro extends javax.swing.JFrame {
+
+    String[][] matrizLibro = new String[100][12];
+    DefaultTableModel modelo;
 
     /**
      * Creates new form JFLibro
@@ -46,20 +52,10 @@ public class JFLibro extends javax.swing.JFrame {
         dateAnioLanzamiento = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         datePublicacion = new com.toedter.calendar.JDateChooser();
-        jLabel8 = new javax.swing.JLabel();
-        txtCategoriaLibro = new javax.swing.JTextField();
         btnBuscarCategoria = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        txtAutorLibro = new javax.swing.JTextField();
         btnBuscarAutor = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        txtEditorialLibro = new javax.swing.JTextField();
         btnBuscarEditorial = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        txtIdiomaLibro = new javax.swing.JTextField();
         btnBuscarIdioma = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        txtEstadoLibro = new javax.swing.JTextField();
         btnBuscarEstado = new javax.swing.JButton();
         btnAgregarLibro = new javax.swing.JButton();
         btnBuscarLibro = new javax.swing.JButton();
@@ -81,7 +77,8 @@ public class JFLibro extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         txtIdEstado = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("LIBRO");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Libro");
@@ -98,16 +95,12 @@ public class JFLibro extends javax.swing.JFrame {
 
         jLabel7.setText("Publicacion:");
 
-        jLabel8.setText("Categoria:");
-
         btnBuscarCategoria.setText("Buscar");
         btnBuscarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarCategoriaActionPerformed(evt);
             }
         });
-
-        jLabel9.setText("Autor:");
 
         btnBuscarAutor.setText("Buscar");
         btnBuscarAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -116,8 +109,6 @@ public class JFLibro extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Editorial:");
-
         btnBuscarEditorial.setText("Buscar");
         btnBuscarEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,16 +116,12 @@ public class JFLibro extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("Idioma:");
-
         btnBuscarIdioma.setText("Buscar");
         btnBuscarIdioma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarIdiomaActionPerformed(evt);
             }
         });
-
-        jLabel12.setText("Estado:");
 
         btnBuscarEstado.setText("Buscar");
         btnBuscarEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -158,10 +145,25 @@ public class JFLibro extends javax.swing.JFrame {
         });
 
         btnEliminarLibro.setText("Eliminar");
+        btnEliminarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarLibroActionPerformed(evt);
+            }
+        });
 
         btnModificarLibro.setText("Modificar");
+        btnModificarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarLibroActionPerformed(evt);
+            }
+        });
 
         btnListarLibro.setText("Listar");
+        btnListarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarLibroActionPerformed(evt);
+            }
+        });
 
         tblLibro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -215,76 +217,31 @@ public class JFLibro extends javax.swing.JFrame {
                                         .addComponent(btnModificarLibro)
                                         .addGap(46, 46, 46)
                                         .addComponent(btnListarLibro))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(79, 79, 79)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(txtCategoriaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jLabel9)
-                                                        .addComponent(jLabel11))
-                                                    .addGap(18, 18, 18)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtAutorLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtIdiomaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel10)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(txtEditorialLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel12)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(txtEstadoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txtIdCategoria)
-                                                .addComponent(txtIdAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                                                .addComponent(txtIdEditorial)
-                                                .addComponent(txtIdIdioma)
-                                                .addComponent(txtIdEstado))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(btnBuscarAutor)
-                                                .addComponent(btnBuscarEditorial)
-                                                .addComponent(btnBuscarIdioma)
-                                                .addComponent(btnBuscarEstado)
-                                                .addComponent(btnBuscarCategoria)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel4)
-                                                .addComponent(jLabel2)
-                                                .addComponent(jLabel7))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(txtNumeroDeSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel3)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(txtTituloLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(txtNumeroPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(11, 11, 11)
-                                                    .addComponent(jLabel5)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(txtPrecioReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(datePublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(30, 30, 30)
-                                                    .addComponent(jLabel6)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(dateAnioLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtNumeroDeSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtTituloLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtNumeroPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(11, 11, 11)
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtPrecioReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(datePublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(30, 30, 30)
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(dateAnioLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(370, 370, 370)
                         .addComponent(jLabel1))
@@ -292,7 +249,29 @@ public class JFLibro extends javax.swing.JFrame {
                         .addGap(261, 261, 261)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIdCategoria)
+                            .addComponent(txtIdAutor)
+                            .addComponent(txtIdEditorial)
+                            .addComponent(txtIdIdioma)
+                            .addComponent(txtIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscarAutor)
+                            .addComponent(btnBuscarEditorial)
+                            .addComponent(btnBuscarIdioma)
+                            .addComponent(btnBuscarEstado)
+                            .addComponent(btnBuscarCategoria))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -319,50 +298,39 @@ public class JFLibro extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7))
-                            .addComponent(datePublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(dateAnioLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtCategoriaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCategoria))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAutorLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel15)
-                    .addComponent(txtIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarAutor))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtEditorialLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEditorial)
-                    .addComponent(jLabel16)
-                    .addComponent(txtIdEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtIdiomaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarIdioma)
-                    .addComponent(jLabel17)
-                    .addComponent(txtIdIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtEstadoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEstado)
-                    .addComponent(jLabel18)
-                    .addComponent(txtIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(datePublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscarCategoria))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(txtIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscarAutor))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBuscarEditorial)
+                            .addComponent(jLabel16)
+                            .addComponent(txtIdEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBuscarIdioma)
+                            .addComponent(jLabel17)
+                            .addComponent(txtIdIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBuscarEstado)
+                            .addComponent(jLabel18)
+                            .addComponent(txtIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarLibro)
                     .addComponent(btnBuscarLibro)
@@ -381,60 +349,57 @@ public class JFLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
         JDBuscarCategoria jdBuscarCategoria = new JDBuscarCategoria(this, true);
         jdBuscarCategoria.setVisible(true);
-        while(jdBuscarCategoria.sw == 0) {
-            txtCategoriaLibro.setText("");
+        while (jdBuscarCategoria.sw == 0) {
+            txtIdCategoria.setText("");
         }
-        txtCategoriaLibro.setText(jdBuscarCategoria.categoria.getTipo());
+
         txtIdCategoria.setText(String.valueOf(jdBuscarCategoria.categoria.getId()));
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarCategoriaActionPerformed
 
     private void btnBuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAutorActionPerformed
         // TODO add your handling code here:
         JDBuscarAutor jdBuscarAutor = new JDBuscarAutor(this, true);
         jdBuscarAutor.setVisible(true);
-        if(jdBuscarAutor.sw == 0) {
-            txtAutorLibro.setText("");
+        if (jdBuscarAutor.sw == 0) {
+            txtIdAutor.setText("");
         }
         txtIdAutor.setText(String.valueOf(jdBuscarAutor.autor.getId()));
-        txtAutorLibro.setText(jdBuscarAutor.autor.getNombre() + " " + jdBuscarAutor.autor.getApellido());
+
     }//GEN-LAST:event_btnBuscarAutorActionPerformed
 
     private void btnBuscarEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEditorialActionPerformed
         // TODO add your handling code here:
         JDBuscarEditorial jdBuscarEditorial = new JDBuscarEditorial(this, true);
         jdBuscarEditorial.setVisible(true);
-        if(jdBuscarEditorial.sw == 0) {
-            txtEditorialLibro.setText("");
+        if (jdBuscarEditorial.sw == 0) {
+            txtIdEditorial.setText("");
         }
         txtIdEditorial.setText(String.valueOf(jdBuscarEditorial.editorial.getId()));
-        txtEditorialLibro.setText(jdBuscarEditorial.editorial.getNombre());
+
     }//GEN-LAST:event_btnBuscarEditorialActionPerformed
 
     private void btnBuscarIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIdiomaActionPerformed
         // TODO add your handling code here:
         JDIdioma jdBuscarIdioma = new JDIdioma(this, true);
         jdBuscarIdioma.setVisible(true);
-        if(jdBuscarIdioma.sw == 0) {
-            txtIdiomaLibro.setText("");
+        if (jdBuscarIdioma.sw == 0) {
+            txtIdIdioma.setText("");
         }
+
         txtIdIdioma.setText(String.valueOf(jdBuscarIdioma.idioma.getId()));
-        txtIdiomaLibro.setText(jdBuscarIdioma.idioma.getIdioma());
     }//GEN-LAST:event_btnBuscarIdiomaActionPerformed
 
     private void btnBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstadoActionPerformed
         // TODO add your handling code here:
         JDEstado jdBuscarEstado = new JDEstado(this, true);
         jdBuscarEstado.setVisible(true);
-        if(jdBuscarEstado.sw == 0) {
-            txtEstadoLibro.setText("");
+        if (jdBuscarEstado.sw == 0) {
+            txtIdEstado.setText("");
         }
         txtIdEstado.setText(String.valueOf(jdBuscarEstado.estado.getId()));
-        txtEstadoLibro.setText(jdBuscarEstado.estado.getDescripcion());
+
     }//GEN-LAST:event_btnBuscarEstadoActionPerformed
 
     private void btnAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibroActionPerformed
@@ -442,7 +407,7 @@ public class JFLibro extends javax.swing.JFrame {
         try {
             Libro libro = new Libro();
             LibroDAO libroDAO = new LibroDAO();
-            
+
             libro.setId(Integer.parseInt(txtIdLibro.getText()));
             libro.setNumeroSerie(txtNumeroDeSerie.getText());
             libro.setTitulo(txtTituloLibro.getText());
@@ -469,7 +434,7 @@ public class JFLibro extends javax.swing.JFrame {
             libro.setAutor(Integer.parseInt(txtIdAutor.getText()));
             libroDAO.insertar(libro);
             JOptionPane.showMessageDialog(null, "Libro ingresado");
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -477,8 +442,120 @@ public class JFLibro extends javax.swing.JFrame {
 
     private void btnBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLibroActionPerformed
         // TODO add your handling code here:
-        
+
+        try {
+            LibroDAO libroDAO = new LibroDAO();
+            Libro libro = libroDAO.buscar(Integer.parseInt(txtIdLibro.getText()));
+            if (libro.getId() != 0) {
+                txtIdLibro.setText(String.valueOf(libro.getId()));
+                txtNumeroDeSerie.setText(libro.getNumeroSerie());
+                txtTituloLibro.setText(libro.getTitulo());
+                txtNumeroPaginas.setText(String.valueOf(libro.getNumeroPaginas()));
+                txtPrecioReferencia.setText(String.valueOf(libro.getPrecioReferencia()));
+                // parseamos el formato
+                //DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                // creamos un string para almacenar la nueva fecha con el nuevo formato
+                //String anioLanzamiento = df.format(libro.getAnoLanzamiento());
+                // parseamos a date
+                //Date anioLanzamientoDate = new SimpleDateFormat("dd/MM/yyyy").parse(anioLanzamiento);
+                // asignamos a la variable
+                //dateAnioLanzamiento.setDate(anioLanzamientoDate);
+                //String anioPublicacion = df.format(libro.getPublicacion());
+                //Date anioPublicacionDate = new SimpleDateFormat("dd/MM/yyyy").parse(anioPublicacion);
+                //datePublicacion.setDate(anioPublicacionDate);
+                txtIdCategoria.setText(String.valueOf(libro.getCategoria()));
+                txtIdAutor.setText(String.valueOf(libro.getAutor()));
+                txtIdIdioma.setText(String.valueOf(libro.getIdioma()));
+                txtIdEditorial.setText(String.valueOf(libro.getEditorial()));
+                txtIdEstado.setText(String.valueOf(libro.getEstado()));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Libro no encontrado");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
     }//GEN-LAST:event_btnBuscarLibroActionPerformed
+
+    private void btnEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibroActionPerformed
+        // TODO add your handling code here:
+        try {
+            LibroDAO libroDAO = new LibroDAO();
+            if (libroDAO.eliminar(Integer.parseInt(txtIdLibro.getText())) != 0) {
+                JOptionPane.showMessageDialog(null, "Libro Eliminado");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró libro para eliminar");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnEliminarLibroActionPerformed
+
+    private void btnModificarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarLibroActionPerformed
+        // TODO add your handling code here:
+        try {
+            Libro libro = new Libro();
+            LibroDAO libroDAO = new LibroDAO();
+
+            libro.setId(Integer.parseInt(txtIdLibro.getText()));
+            libro.setNumeroSerie(txtNumeroDeSerie.getText());
+            libro.setTitulo(txtTituloLibro.getText());
+            libro.setNumeroPaginas(Integer.parseInt(txtNumeroPaginas.getText()));
+            libro.setPrecioReferencia(Integer.parseInt(txtPrecioReferencia.getText()));
+            String anioLanzamientoString = new String();
+            // rescatamos la fecha para convertir a SQL
+            long anioLanzamientoDate = (dateAnioLanzamiento.getDate().getTime());
+            // Convertimos a SQL
+            java.sql.Date anioLanzamientoSQL = new java.sql.Date(anioLanzamientoDate);
+            DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+            // De SQL a String
+            anioLanzamientoString = df.format(anioLanzamientoSQL);
+            libro.setAnoLanzamiento(anioLanzamientoString);
+            long publicacionDate = (datePublicacion.getDate().getTime());
+            String anioPublicacion = new String();
+            java.sql.Date publicacionSQL = new java.sql.Date(publicacionDate);
+            anioPublicacion = df.format(publicacionSQL);
+            libro.setPublicacion(anioPublicacion);
+            libro.setCategoria(Integer.parseInt(txtIdCategoria.getText()));
+            libro.setEstado(Integer.parseInt(txtIdEstado.getText()));
+            libro.setEditorial(Integer.parseInt(txtIdEditorial.getText()));
+            libro.setIdioma(Integer.parseInt(txtIdIdioma.getText()));
+            libro.setAutor(Integer.parseInt(txtIdAutor.getText()));
+            libroDAO.modificar(libro);
+            JOptionPane.showMessageDialog(null, "Libro Modificado");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnModificarLibroActionPerformed
+
+    private void btnListarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarLibroActionPerformed
+        // TODO add your handling code here:
+        try {
+            int fila = 0;
+            LibroDAO libroDAO = new LibroDAO();
+            String[] titulos = {"ID", "N° SERIE", "TITULO", "PRECIO REF", "LANZAMIENTO","PUBLICACION", "CATEGORIA", "AUTOR", "EDITORIAL", "IDIOMA", "ESTADO"};
+            ArrayList<Libro> lista = libroDAO.listarLibros();
+            for(Libro libro : lista) {
+                matrizLibro[fila][0] = String.valueOf(libro.getId());
+                matrizLibro[fila][1] = libro.getNumeroSerie();
+                matrizLibro[fila][2] = libro.getTitulo();
+                matrizLibro[fila][3] = String.valueOf(libro.getPrecioReferencia());
+                matrizLibro[fila][4] = libro.getAnoLanzamiento();
+                matrizLibro[fila][5] = libro.getPublicacion();
+                matrizLibro[fila][6] = String.valueOf(libro.getCategoria());
+                matrizLibro[fila][7] = String.valueOf(libro.getAutor());
+                matrizLibro[fila][8] = String.valueOf(libro.getEditorial());
+                matrizLibro[fila][9] = String.valueOf(libro.getIdioma());
+                matrizLibro[fila][10] = String.valueOf(libro.getEstado());
+  
+            }
+            modelo = new DefaultTableModel(matrizLibro, titulos);
+            tblLibro.setModel(modelo);
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnListarLibroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -529,9 +606,6 @@ public class JFLibro extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateAnioLanzamiento;
     private com.toedter.calendar.JDateChooser datePublicacion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -544,21 +618,14 @@ public class JFLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblLibro;
-    private javax.swing.JTextField txtAutorLibro;
-    private javax.swing.JTextField txtCategoriaLibro;
-    private javax.swing.JTextField txtEditorialLibro;
-    private javax.swing.JTextField txtEstadoLibro;
     private javax.swing.JTextField txtIdAutor;
     private javax.swing.JTextField txtIdCategoria;
     private javax.swing.JTextField txtIdEditorial;
     private javax.swing.JTextField txtIdEstado;
     private javax.swing.JTextField txtIdIdioma;
     private javax.swing.JTextField txtIdLibro;
-    private javax.swing.JTextField txtIdiomaLibro;
     private javax.swing.JTextField txtNumeroDeSerie;
     private javax.swing.JTextField txtNumeroPaginas;
     private javax.swing.JTextField txtPrecioReferencia;

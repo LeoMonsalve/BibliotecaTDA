@@ -49,7 +49,8 @@ public class JFEstado extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEstado = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ESTADO");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Estado");
@@ -184,7 +185,7 @@ public class JFEstado extends javax.swing.JFrame {
             estado.setId(Integer.parseInt(txtIdEstado.getText()));
             estado.setDescripcion(txtDescripcionEstado.getText());
             estadoDAO.insertar(estado);
-            JOptionPane.showMessageDialog(null, "Idioma ingresado");
+            JOptionPane.showMessageDialog(null, "Estado ingresado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -235,7 +236,7 @@ public class JFEstado extends javax.swing.JFrame {
             estado.setId(Integer.parseInt(txtIdEstado.getText()));
             estado.setDescripcion(txtDescripcionEstado.getText());
             estadoDAO.modificar(estado);
-            JOptionPane.showMessageDialog(null, "Autor Modificado");
+            JOptionPane.showMessageDialog(null, "Estado Modificado");
             limpiarControles();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());

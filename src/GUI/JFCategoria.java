@@ -49,7 +49,8 @@ public class JFCategoria extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCategoria = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CATEGORIA");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Categoría");
@@ -234,6 +235,7 @@ public class JFCategoria extends javax.swing.JFrame {
             Categoria categoria = new Categoria();
             categoria.setId(Integer.parseInt(txtIdCategoria.getText()));
             categoria.setTipo(txtTipoCategoria.getText());
+            categoriaDAO.modificar(categoria);
             JOptionPane.showMessageDialog(null, "Categoria Modificada");
             limpiarControles();
         } catch(Exception e) {

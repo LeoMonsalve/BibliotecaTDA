@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author henrr
  */
 public class JFDireccion extends javax.swing.JFrame {
-    String [][] matrizDireccion = new String[100][5];
+    String [][] matrizDireccion = new String[100][4];
     DefaultTableModel modelo;
     /**
      * Creates new form JFDireccion
@@ -55,7 +55,8 @@ public class JFDireccion extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("DIRECCION");
 
         txtNombreComuna.setEditable(false);
         txtNombreComuna.addActionListener(new java.awt.event.ActionListener() {
@@ -263,6 +264,12 @@ public class JFDireccion extends javax.swing.JFrame {
 
     private void tblDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDireccionMouseClicked
         // TODO add your handling code here:
+        int fila = tblDireccion.getSelectedRow();
+        txtIdDireccion.setText(tblDireccion.getValueAt(fila, 0).toString());
+        txtCalleDireccion.setText(tblDireccion.getValueAt(fila, 1).toString());
+        txtNumeroDireccion.setText(tblDireccion.getValueAt(fila, 2).toString());
+        txtIdComuna.setText(tblDireccion.getValueAt(fila, 3).toString());
+        
     }//GEN-LAST:event_tblDireccionMouseClicked
 
     private void btnModificarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarDireccionActionPerformed
@@ -275,9 +282,10 @@ public class JFDireccion extends javax.swing.JFrame {
             direccion.setId(Integer.parseInt(txtIdComuna.getText()));
             direccion.setNumero(Integer.parseInt(txtNumeroDireccion.getText()));
             direccionDAO.modificar(direccion);
-
-        } catch (Exception e) {
-
+            JOptionPane.showMessageDialog(null, "Direccion Modificada");
+            limpiarControles();
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
 
@@ -303,13 +311,19 @@ public class JFDireccion extends javax.swing.JFrame {
         try {
             int fila = 0;
             DireccionDAO direccionDAO = new DireccionDAO();
-            String[] titulos = {"ID", "CALLE", "NUMERO", "COMUNA_ID"};
+            String[] titulos = {"ID DIRECCION", "CALLE", "NUMERO", "ID COMUNA"};
             ArrayList<Direccion> lista = direccionDAO.listarDirecciones();
             for(Direccion direccion: lista) {
-                matrizDireccion[fila][0] = String.valueOf(matrizDireccion, titulos);
+                matrizDireccion[fila][0] = String.valueOf(direccion.getId());
+                matrizDireccion[fila][1] = direccion.getCalle();
+                matrizDireccion[fila][2] = String.valueOf(direccion.getNumero());
+                matrizDireccion[fila][3] = String.valueOf(direccion.getComunaId());
+                fila++;
             }
+            modelo = new DefaultTableModel(matrizDireccion, titulos);
+            tblDireccion.setModel(modelo);
         } catch(Exception e) {
-            
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnListarActionPerformed
 

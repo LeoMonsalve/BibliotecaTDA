@@ -50,7 +50,7 @@ public class DireccionDAO extends Conexion {
     
     public ArrayList<Direccion> listarDirecciones() throws SQLException, Exception {
         super.conectar();
-        ResultSet result = state.executeQuery("SELECT * FROM direcciones");
+        ResultSet result = state.executeQuery("SELECT * FROM direccion");
         ArrayList<Direccion> direcciones = new ArrayList<Direccion>();
         
         while(result.next()) {
