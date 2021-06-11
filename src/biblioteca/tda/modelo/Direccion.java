@@ -12,14 +12,14 @@ package biblioteca.tda.modelo;
 public class Direccion {
     private int id;
     private String calle;
-    private int numero;
+    private String numero;
     private int comunaId;
     private int listaDirecciones;
 
     public Direccion() {
     }
 
-    public Direccion(int id, String calle, int numero, int comunaId, int listaDirecciones) {
+    public Direccion(int id, String calle, String numero, int comunaId, int listaDirecciones) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
@@ -47,11 +47,11 @@ public class Direccion {
         }
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

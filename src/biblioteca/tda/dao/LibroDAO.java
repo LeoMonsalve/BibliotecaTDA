@@ -108,18 +108,15 @@ public class LibroDAO extends Conexion {
             publicacion = df.format(fechaPublicacion);
             libro.setPublicacion(publicacion);
             libro.setCategoria((int) result.getObject(8));
-<<<<<<< HEAD
             libro.setAutor((int) result.getObject(9));
             libro.setEditorial((int) result.getObject(10));
             libro.setIdioma((int) result.getObject(11));
             libro.setEstado((int) result.getObject(12));
-=======
             libro.setEstado((int) result.getObject(9));
             libro.setIdioma((int) result.getObject(10));
             libro.setEditorial((int) result.getObject(11));
             libro.setAutor((int) result.getObject(12));
             //guardamos los libros en "libros"
->>>>>>> 4ad024b21cb04cdc6ba72aa2025c84f475f60e06
             libros.add(libro);
         }
         //retornamos el nuevo objeto con todos los libros en el.

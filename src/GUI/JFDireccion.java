@@ -8,6 +8,8 @@ package GUI;
 import biblioteca.tda.dao.DireccionDAO;
 import biblioteca.tda.modelo.Direccion;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author henrr
  */
 public class JFDireccion extends javax.swing.JFrame {
-    String [][] matrizDireccion = new String[100][4];
+    String [][] matrizDireccion = new String[100][5];
     DefaultTableModel modelo;
     /**
      * Creates new form JFDireccion
@@ -91,13 +93,13 @@ public class JFDireccion extends javax.swing.JFrame {
 
         tblDireccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID DIRECCION", "CALLE", "NUMERO", "ID COMUNA"
+                "ID DIRECCION", "CALLE", "NUMERO", "ID COMUNA", "LISTA DIRECCIONES"
             }
         ));
         tblDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -253,6 +255,7 @@ public class JFDireccion extends javax.swing.JFrame {
             Direccion direccion = new Direccion();
             direccion.setId(Integer.parseInt(txtIdDireccion.getText()));
             direccion.setCalle(txtCalleDireccion.getText());
+            direccion.setNumero(txtNumeroDireccion.getText());
             direccion.setComunaId(Integer.parseInt(txtIdComuna.getText()));
             direccionDAO.insertar(direccion);
             limpiarControles();
@@ -280,7 +283,7 @@ public class JFDireccion extends javax.swing.JFrame {
             direccion.setId(Integer.parseInt(txtIdDireccion.getText()));
             direccion.setCalle(txtCalleDireccion.getText());
             direccion.setId(Integer.parseInt(txtIdComuna.getText()));
-            direccion.setNumero(Integer.parseInt(txtNumeroDireccion.getText()));
+            direccion.setNumero(txtNumeroDireccion.getText());
             direccionDAO.modificar(direccion);
             JOptionPane.showMessageDialog(null, "Direccion Modificada");
             limpiarControles();
@@ -307,24 +310,28 @@ public class JFDireccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        // TODO add your handling code here:
         try {
+            // TODO add your handling code here:
+            
             int fila = 0;
             DireccionDAO direccionDAO = new DireccionDAO();
-            String[] titulos = {"ID DIRECCION", "CALLE", "NUMERO", "ID COMUNA"};
+            String[] titulos = {"ID DIRECCION", "CALLE", "NUMERO", "ID COMUNA", "LISTA DIRECCIONES"};
             ArrayList<Direccion> lista = direccionDAO.listarDirecciones();
             for(Direccion direccion: lista) {
-                matrizDireccion[fila][0] = String.valueOf(direccion.getId());
-                matrizDireccion[fila][1] = direccion.getCalle();
-                matrizDireccion[fila][2] = String.valueOf(direccion.getNumero());
-                matrizDireccion[fila][3] = String.valueOf(direccion.getComunaId());
+                 matrizDireccion[fila][0] = String.valueOf(direccion.getId());
+                 matrizDireccion[fila][1] = direccion.getCalle();
+                
+                 matrizDireccion[fila][2] = direccion.getNumero();
+                 matrizDireccion[fila][3] = String.valueOf(direccion.getComunaId());
+                 matrizDireccion[fila][4] = String.valueOf(direccion.getListaDirecciones());
                 fila++;
             }
             modelo = new DefaultTableModel(matrizDireccion, titulos);
             tblDireccion.setModel(modelo);
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (Exception ex) {        
+            Logger.getLogger(JFDireccion.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btnListarActionPerformed
 
     public void limpiarControles() {

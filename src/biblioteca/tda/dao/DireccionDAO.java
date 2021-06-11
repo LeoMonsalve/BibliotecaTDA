@@ -42,7 +42,7 @@ public class DireccionDAO extends Conexion {
         while(result.next()) {
             direccion.setId((int) result.getObject(1));
             direccion.setCalle((String) result.getObject(2));
-            direccion.setNumero((int) result.getObject(3));
+            direccion.setNumero((String) result.getObject(3));
             direccion.setComunaId((int) result.getObject(4));
             direccion.setListaDirecciones((int) result.getObject(5));
         }
@@ -58,9 +58,20 @@ public class DireccionDAO extends Conexion {
             Direccion direccion= new Direccion();
             direccion.setId((int) result.getObject(1));
             direccion.setCalle((String) result.getObject(2));
-            direccion.setNumero((int) result.getObject(3));
+            direccion.setNumero((String) result.getObject(3));
             direccion.setComunaId((int) result.getObject(4));
-            direccion.setListaDirecciones((int) result.getObject(5));
+            
+             
+            
+            // Si el objeto que llega de la base de datos es nulo, la lista de 
+            // dirección se setea en -1
+            if(result.getObject(5) == null) {
+                direccion.setListaDirecciones(-1);
+            } else {
+                direccion.setListaDirecciones((int) result.getObject(5));
+            }
+            
+            
             direcciones.add(direccion);
         }
         //retornamos objeto con todas las direcciones.
