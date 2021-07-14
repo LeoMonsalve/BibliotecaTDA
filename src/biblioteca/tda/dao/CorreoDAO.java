@@ -23,7 +23,7 @@ public class CorreoDAO extends Conexion {
         try {
             super.conectar();
             int id = super.ultimoId("correo") + 1;
-            super.state.executeUpdate("INSERT INTO idioma VALUES (" + id
+            super.state.executeUpdate("INSERT INTO correo VALUES (" + id
                     + ", '" + correo.getCorreo()+ "', " + correo.getListaCorreo()+");");
             con.close();
         } catch (Exception ex) {

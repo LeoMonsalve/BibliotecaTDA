@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Boleta
  * @author leone
  */
 public class BoletaMultaDAO extends Conexion {
@@ -22,6 +22,11 @@ public class BoletaMultaDAO extends Conexion {
         super();
     }
      //insertamos valores en la BBDD
+     
+    /**
+     * Método para insertar nueva Boleta en la base de datos
+     * @param boletaMulta 
+     */
     public void insertar(BoletaMulta boletaMulta) {
         try {
             super.conectar();
@@ -35,6 +40,12 @@ public class BoletaMultaDAO extends Conexion {
         }
     }
     
+    /**
+     * 
+     * @param id 
+     * @return Boleta con los datos buscados en la base de Datos
+     * @throws SQLException 
+     */
     //Buscamos por ID 
     public BoletaMulta buscar(int id) throws SQLException {
         super.conectar();

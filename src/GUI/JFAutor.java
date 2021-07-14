@@ -232,7 +232,7 @@ public class JFAutor extends javax.swing.JFrame {
                 txtIdAutor.requestFocus();
             }
         } catch (Exception e) {
-            
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnBuscarAutorActionPerformed
 

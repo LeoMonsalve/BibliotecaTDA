@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Comuna
  * @author leone
  */
 public class ComunaDAO extends Conexion {
@@ -19,6 +19,10 @@ public class ComunaDAO extends Conexion {
         super();
     }
 //creamos metodo insertar para la BBDD
+      /**
+       * Método para insertar nueva Comuna en la base de datos
+       * @param comuna 
+       */
     public void insertar(Comuna comuna) {
         try {
             super.conectar();
@@ -30,6 +34,14 @@ public class ComunaDAO extends Conexion {
             ex.printStackTrace();
         }
     }
+    
+    /**
+     * Método para buscar Comuna por ID en la base de datos
+     * @param id
+     * @return Objeto comuna
+     * @throws SQLException
+     * @throws Exception 
+     */
     //implementamos metodo buscar por ID 
     public Comuna buscar(int id) throws SQLException, Exception {
         super.conectar();
@@ -45,6 +57,14 @@ public class ComunaDAO extends Conexion {
         return comuna;
     }
     //creamos metodo para buscar por Nombre de comuna
+    
+    /**
+     * Método para buscar Comuna por nombre comuna en la base de datos
+     * @param nombreComuna
+     * @return Objeto 
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Comuna buscar(String nombreComuna) throws SQLException, Exception {
         super.conectar();
         //creamos nuevo objeto comunca para tomar los valores.
@@ -59,6 +79,13 @@ public class ComunaDAO extends Conexion {
         return comuna;
     }
     
+    
+    /**
+     * Método para devolver todas las comunas de la base de datos
+     * @return ArrayList con todas las comunas
+     * @throws SQLException
+     * @throws Exception 
+     */
     //creamos metodo que nos liste todas las comunas
     public ArrayList<Comuna> listar() throws SQLException, Exception {
         super.conectar();
@@ -77,7 +104,14 @@ public class ComunaDAO extends Conexion {
         //retornamos el objeto con todas las comunas.
         return comunas;
     }
+    
+    
     //implementamos metodo modificar 
+    /**
+     * Método para modificar comuna en la base de datos
+     * @param comuna
+     * @throws SQLException 
+     */
     public void modificar(Comuna comuna) throws SQLException {
         try {
             super.conectar();
@@ -89,6 +123,11 @@ public class ComunaDAO extends Conexion {
         }
     }
     //implementamos metodo eliminar 
+    /**
+     * Método que elimina comuna por ID
+     * @param id
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

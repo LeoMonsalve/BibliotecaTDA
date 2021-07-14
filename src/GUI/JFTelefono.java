@@ -7,6 +7,7 @@ package GUI;
 
 import biblioteca.tda.dao.TelefonoDAO;
 import biblioteca.tda.modelo.Telefono;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -65,12 +66,32 @@ public class JFTelefono extends javax.swing.JFrame {
         });
 
         btnBuscarTelefono.setText("Buscar");
+        btnBuscarTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarTelefonoActionPerformed(evt);
+            }
+        });
 
         btnEliminarTelefono.setText("Eliminar");
+        btnEliminarTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarTelefonoActionPerformed(evt);
+            }
+        });
 
         btnModificarTelefono.setText("Modificar");
+        btnModificarTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarTelefonoActionPerformed(evt);
+            }
+        });
 
         btnListarTelefono.setText("Listar");
+        btnListarTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarTelefonoActionPerformed(evt);
+            }
+        });
 
         tblTelefonos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,10 +188,79 @@ public class JFTelefono extends javax.swing.JFrame {
             telefono.setId(Integer.parseInt(txtIdTelefono.getText()));
             telefono.setNumero(txtNumeroTelefono.getText());
             telefono.setListaNumeros(Integer.parseInt(txtIdListaTel.getText()));
+            telefonoDAO.insertar(telefono);
+            JOptionPane.showMessageDialog(null, "Telefono ingresado");
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnAgregarTelefonoActionPerformed
+
+    private void btnBuscarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTelefonoActionPerformed
+        // TODO add your handling code here:
+        try {
+            TelefonoDAO telefonoDAO = new TelefonoDAO();
+            Telefono telefono = telefonoDAO.buscar(Integer.parseInt(txtIdTelefono.getText()));
+            if(telefono.getId() != 0) {
+                txtNumeroTelefono.setText(telefono.getNumero());
+                txtIdTelefono.setText(String.valueOf(telefono.getListaNumeros()));
+            } else {
+                JOptionPane.showMessageDialog(null, "Telefono no encontrado");
+                txtIdTelefono.requestFocus();
+                limpiarControles();
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarTelefonoActionPerformed
+
+    private void btnEliminarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTelefonoActionPerformed
+        // TODO add your handling code here:
+        try {
+            TelefonoDAO telefonoDAO = new TelefonoDAO();
+            if(telefonoDAO.eliminar(Integer.parseInt(txtIdTelefono.getText())) != 0) {
+                JOptionPane.showMessageDialog(null, "Telefono Eliminado");
+                limpiarControles();
+                txtIdTelefono.requestFocus();
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnEliminarTelefonoActionPerformed
+
+    private void btnModificarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarTelefonoActionPerformed
+        // TODO add your handling code here:
+        try {
+            Telefono telefono = new Telefono();
+            TelefonoDAO telefonoDAO = new TelefonoDAO();
+            telefono.setId(Integer.parseInt(txtIdTelefono.getText()));
+            telefono.setNumero(txtNumeroTelefono.getText());
+            telefono.setListaNumeros(Integer.parseInt(txtIdListaTel.getText()));
+            telefonoDAO.modificar(telefono);
+            JOptionPane.showMessageDialog(null, "Telefono Modificado");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnModificarTelefonoActionPerformed
+
+    private void btnListarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarTelefonoActionPerformed
+        // TODO add your handling code here:
+        try {
+            int fila = 0;
+            TelefonoDAO telefonoDAO = new TelefonoDAO();
+            String[] titulos = {"ID", "NUMERO", "LISTA_TELEFONO"};
+            ArrayList<Telefono> lista = telefonoDAO.listar();
+            for(Telefono telefono : lista) {
+                matrizTelefono[fila][0] = String.valueOf(telefono.getId());
+                matrizTelefono[fila][1] = telefono.getNumero();
+                matrizTelefono[fila][2] = String.valueOf(telefono.getListaNumeros());
+                fila++;
+            }
+            modelo = new DefaultTableModel(matrizTelefono, titulos);
+            tblTelefonos.setModel(modelo);
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnListarTelefonoActionPerformed
 
     public void limpiarControles() {
         txtIdTelefono.setText("");

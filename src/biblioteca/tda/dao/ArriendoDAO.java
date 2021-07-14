@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Arriendo
  * @author henrry
  */
 public class ArriendoDAO extends Conexion {
@@ -24,6 +24,10 @@ public class ArriendoDAO extends Conexion {
         super();
     }
     //insertar valores en bbdd
+    /**
+     * Método para insertar nuevo Arriendo en la base de datos
+     * @param arriendo 
+     */
     public void insertar(Arriendo arriendo) {
         try {
             super.conectar();
@@ -39,6 +43,12 @@ public class ArriendoDAO extends Conexion {
         }
     }
     //buscando por id en bbdd
+    /**
+     * Método para buscar arriendo por ID en la base de datos
+     * @param id 
+     * @return Objeto Arriendo
+     * @throws SQLException 
+     */
     public Arriendo buscar(int id) throws SQLException {
         super.conectar();
         Arriendo arriendo = new Arriendo();
@@ -69,6 +79,12 @@ public class ArriendoDAO extends Conexion {
         return arriendo;
     }
     //metodo para listar 
+    /**
+     * Método para devolver todas los arriendos de la base de datos
+     * @return ArrayList con todos los Arriendos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Arriendo> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM arriendo");
@@ -104,6 +120,11 @@ public class ArriendoDAO extends Conexion {
     }
     
     //metodo para modificiar
+    
+    /**
+     * Método para modificar Arriendo en la base de datos
+     * @param arriendo objeto modificado
+     */
     public void modificar(Arriendo arriendo) {
         try {
             super.conectar();
@@ -120,6 +141,12 @@ public class ArriendoDAO extends Conexion {
         }
     }
     //metodo para eliminar
+    
+    /**
+     * Método que elimina Arriendo por ID
+     * @param id int requerido para buscar en la base de datos
+     * @return int con el número de filas afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

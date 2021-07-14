@@ -24,7 +24,7 @@ public class TelefonoDAO extends Conexion {
             super.conectar();
             int id = super.ultimoId("telefono") + 1;
             super.state.executeUpdate("INSERT INTO telefono VALUES (" + id
-                    + ", '" + telefono.getNumero()+ "', " + telefono.getListaNumeros()+");");
+                    + ", '" + telefono.getNumero()+ "', NULL);");
             con.close();
         } catch (Exception ex) {
             ex.printStackTrace();

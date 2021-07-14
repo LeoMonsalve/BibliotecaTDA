@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Autor
  * @author henrry
  */
 public class AutorDAO extends Conexion {
@@ -20,6 +20,10 @@ public class AutorDAO extends Conexion {
         super();
     }
     //insertar valores en bbdd
+    /**
+     * Método para insertar nueva Autor en la base de datos
+     * @param autor 
+     */
     public void insertar(Autor autor) {
         try {
             super.conectar();
@@ -33,6 +37,13 @@ public class AutorDAO extends Conexion {
     } 
     
     //buscamos autor por ID en BBDD
+    /**
+     * Método para buscar Autor por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Autor
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Autor buscar(int id) throws SQLException, Exception {
         super.conectar();
         //creamos objeto autor para tomar los valores 
@@ -48,6 +59,12 @@ public class AutorDAO extends Conexion {
     }
     
     //Listamos los valores de la tabla Autor
+    /**
+     * Método para devolver todas los autores de la base de datos
+     * @return Objeto ArrayList con todos los autores
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Autor> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM autor");
@@ -65,6 +82,11 @@ public class AutorDAO extends Conexion {
         return autores;
     }
     //creamos el metodo modificar
+    /**
+     * Método para modificar Autor en la base de datos
+     * @param autor Objeto autor
+     * @throws SQLException 
+     */
     public void modificar(Autor autor) throws SQLException {
         try {
             super.conectar();
@@ -76,6 +98,11 @@ public class AutorDAO extends Conexion {
         }
     }
     //creamos metodo Eliminar.
+    /**
+     * 
+     * @param id
+     * @return entero 
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {
