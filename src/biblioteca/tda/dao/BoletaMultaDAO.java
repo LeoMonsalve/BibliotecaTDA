@@ -42,7 +42,7 @@ public class BoletaMultaDAO extends Conexion {
     
     /**
      * 
-     * @param id 
+     * @param id entero para buscar en la base de datos.
      * @return Boleta con los datos buscados en la base de Datos
      * @throws SQLException 
      */
@@ -70,6 +70,11 @@ public class BoletaMultaDAO extends Conexion {
     }
     
     //Creamos metodo para listar 
+    /**
+     * Método para devolver todas las comunas de la base de datos
+     * @return ArrayList con todos las Boletas
+     * @throws SQLException 
+     */
     public ArrayList<BoletaMulta> listar() throws SQLException {
         super.conectar();
         //creamos objeto para parsear el Date
@@ -95,6 +100,11 @@ public class BoletaMultaDAO extends Conexion {
         return bms;
     }
     //creamos metodo para modificar 
+    /**
+     * Método para modificar boleta en la base de datos
+     * @param boletaMulta Objeto BoletaMulta con los datos modificados
+     * @throws SQLException 
+     */
     public void modificar(BoletaMulta boletaMulta) throws SQLException {
         try {
             super.conectar();
@@ -106,6 +116,11 @@ public class BoletaMultaDAO extends Conexion {
         }
     }
     //creamos metodo para eliminar
+    /**
+     * Método que elimina nombreTabla por ID
+     * @param id int con el ID que se ejecutará la QUERY
+     * @return int con el número de filas afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

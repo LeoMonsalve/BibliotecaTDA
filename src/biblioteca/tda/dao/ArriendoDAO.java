@@ -45,8 +45,8 @@ public class ArriendoDAO extends Conexion {
     //buscando por id en bbdd
     /**
      * Método para buscar arriendo por ID en la base de datos
-     * @param id 
-     * @return Objeto Arriendo
+     * @param id entero para buscar en la base de datos.
+     * @return Objeto Arriendo con los datos encontrados
      * @throws SQLException 
      */
     public Arriendo buscar(int id) throws SQLException {
@@ -123,7 +123,7 @@ public class ArriendoDAO extends Conexion {
     
     /**
      * Método para modificar Arriendo en la base de datos
-     * @param arriendo objeto modificado
+     * @param arriendo Objeto Arriendo con los datos modificados
      */
     public void modificar(Arriendo arriendo) {
         try {
@@ -144,7 +144,7 @@ public class ArriendoDAO extends Conexion {
     
     /**
      * Método que elimina Arriendo por ID
-     * @param id int requerido para buscar en la base de datos
+     * @param id int con el ID que se ejecutará la QUERY
      * @return int con el número de filas afectadas
      */
     public int eliminar(int id){

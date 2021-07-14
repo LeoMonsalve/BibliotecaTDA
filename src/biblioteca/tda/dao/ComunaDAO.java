@@ -109,7 +109,7 @@ public class ComunaDAO extends Conexion {
     //implementamos metodo modificar 
     /**
      * Método para modificar comuna en la base de datos
-     * @param comuna
+     * @param comuna Objeto Comuna con los datos modificados
      * @throws SQLException 
      */
     public void modificar(Comuna comuna) throws SQLException {
@@ -125,8 +125,8 @@ public class ComunaDAO extends Conexion {
     //implementamos metodo eliminar 
     /**
      * Método que elimina comuna por ID
-     * @param id
-     * @return entero con el numero de filas que fueron afectadas
+     * @param id int con el ID que se ejecutará la QUERY
+     * @return int con el numero de filas que fueron afectadas
      */
     public int eliminar(int id) {
         int entero = 0;
