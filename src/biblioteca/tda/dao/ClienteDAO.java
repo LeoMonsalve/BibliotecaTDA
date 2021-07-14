@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Cliente
  * @author henrry
  */
 public class ClienteDAO extends Conexion {
@@ -23,6 +23,10 @@ public class ClienteDAO extends Conexion {
         super();
     }
     //Creamos metodo para insertar los valores.
+    /**
+     * Método para insertar nueva nombreTabla en la base de datos
+     * @param cliente Objeto Cliente que se insertará en la base de datos
+     */
     public void insertar(Cliente cliente) {
         try {
             super.conectar();
@@ -38,6 +42,13 @@ public class ClienteDAO extends Conexion {
         }
     }
     //creamos metodo para buscar por ID 
+    /**
+     * Método para buscar Cliente por ID en la base de datos
+     * @param id int para buscar en la base de datos.
+     * @return Objeto Cliente que se insertará en la base de datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Cliente buscar(int id) throws SQLException, Exception {
         super.conectar();
         //creamos nuevo objeto para tomar los valores
@@ -68,6 +79,12 @@ public class ClienteDAO extends Conexion {
     }
     
     //listammos los clientes 
+    /**
+     * Método para devolver todas los clientes de la base de datos
+     * @return ArrayList con todas los clientes
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Cliente> listarClientes() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM cliente");
@@ -99,6 +116,10 @@ public class ClienteDAO extends Conexion {
         return clientes;      
     }
     //creamos metodo modificar
+    /**
+     * Método para modificar Cliente en la base de datos
+     * @param cliente Objeto Cliente con los datos modificados
+     */
     public void modificar(Cliente cliente) {
         try {
             super.conectar();
@@ -116,6 +137,11 @@ public class ClienteDAO extends Conexion {
         }
     }
     //creamos metodo eliminar
+    /**
+     * Método que elimina Cliente por ID
+     * @param id int con el ID que se ejecutará la QUERY
+     * @return int con el número de filas afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {
