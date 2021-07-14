@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * DAO para el manejo de la base de datos con la tabla Categoria
+ *
  * @author henrr
  */
 public class CategoriaDAO extends Conexion {
@@ -20,11 +20,6 @@ public class CategoriaDAO extends Conexion {
         super();
     }
     //creamos metodo para insertar
-    
-    /**
-     * Método para insertar nueva Categoria en la base de datos
-     * @param categoria Objeto Categoria que se insertará en la base de datos
-     */
     public void insertar(Categoria categoria){
             try {
             super.conectar();
@@ -38,13 +33,6 @@ public class CategoriaDAO extends Conexion {
         }
     }
 // buscamos categoria
-    /**
-     * Método para buscar Categoria por ID en la base de datos
-     * @param id int para buscar en la base de datos.
-     * @return Categoria con los datos buscados en la base de datos
-     * @throws SQLException
-     * @throws Exception 
-     */
     public Categoria buscar(int id) throws SQLException, Exception{
         super.conectar();
         //creamos nuevo objeto para setearle los valores.
@@ -59,12 +47,6 @@ public class CategoriaDAO extends Conexion {
         return categoria;
     }
     //metodo para Listar categorias
-    /**
-     * Método para devolver todas las Categorias de la base de datos
-     * @return ArrayList con todas las Categorias
-     * @throws SQLException
-     * @throws Exception 
-     */
     public ArrayList<Categoria> listarCategorias() throws SQLException, Exception{
 
         super.conectar();
@@ -86,10 +68,6 @@ public class CategoriaDAO extends Conexion {
         return categorias;
     }
     //creamos metodo modificar 
-    /**
-     * Método para modificar Categoria en la base de datos
-     * @param categoria Objeto Categoria con los datos modificados
-     */
     public void modificar(Categoria categoria){
       try {
         super.conectar();
@@ -101,11 +79,6 @@ public class CategoriaDAO extends Conexion {
       }  
     }
     //creamos metodo eliminar.
-    /**
-     * Método que elimina nombreTabla por ID
-     * @param id int con el ID que se ejecutará la QUERY
-     * @return int con el número de filas afectadas
-     */
     public int eliminar(int id){
         int entero=0;
         try {

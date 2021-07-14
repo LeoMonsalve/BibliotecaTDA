@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * DAO para el manejo de la base de datos con la tabla Direccion
+ *
  * @author henrry
  */
 public class DireccionDAO extends Conexion {
@@ -20,10 +20,6 @@ public class DireccionDAO extends Conexion {
         super();
     }
     //Implementamos metodo insertar 
-    /**
-     * Método para insertar nueva Direccion en la base de datos
-     * @param direccion 
-     */
     public void insertar(Direccion direccion) {
         try {
             super.conectar();
@@ -37,13 +33,6 @@ public class DireccionDAO extends Conexion {
         }
     }
     //buscamos una direccion por ID 
-    /**
-     * 
-     * @param id
-     * @return
-     * @throws SQLException
-     * @throws Exception 
-     */
     public Direccion buscar(int id) throws SQLException, Exception {
         super.conectar();
         //creamos nuevo objeto que tome los valores

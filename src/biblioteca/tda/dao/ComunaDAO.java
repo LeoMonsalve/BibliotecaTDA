@@ -61,7 +61,7 @@ public class ComunaDAO extends Conexion {
     /**
      * Método para buscar Comuna por nombre comuna en la base de datos
      * @param nombreComuna
-     * @return Objeto Comuna con los datos encontrados
+     * @return Objeto 
      * @throws SQLException
      * @throws Exception 
      */

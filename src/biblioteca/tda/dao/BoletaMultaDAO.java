@@ -42,8 +42,8 @@ public class BoletaMultaDAO extends Conexion {
     
     /**
      * 
-     * @param id int para buscar en la base de datos.
-     * @return Boleta con los datos buscados en la base de datos
+     * @param id entero para buscar en la base de datos.
+     * @return Boleta con los datos buscados en la base de Datos
      * @throws SQLException 
      */
     //Buscamos por ID 

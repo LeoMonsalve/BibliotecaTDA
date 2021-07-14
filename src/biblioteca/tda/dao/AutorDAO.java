@@ -22,7 +22,7 @@ public class AutorDAO extends Conexion {
     //insertar valores en bbdd
     /**
      * Método para insertar nueva Autor en la base de datos
-     * @param autor Objeto Autor que se insertará en la base de datos
+     * @param autor 
      */
     public void insertar(Autor autor) {
         try {

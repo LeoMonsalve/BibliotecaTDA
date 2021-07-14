@@ -45,7 +45,7 @@ public class ArriendoDAO extends Conexion {
     //buscando por id en bbdd
     /**
      * Método para buscar arriendo por ID en la base de datos
-     * @param id int para buscar en la base de datos.
+     * @param id entero para buscar en la base de datos.
      * @return Objeto Arriendo con los datos encontrados
      * @throws SQLException 
      */
