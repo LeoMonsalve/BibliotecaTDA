@@ -40,7 +40,7 @@ public class AutorDAO extends Conexion {
     /**
      * Método para buscar Autor por ID en la base de datos
      * @param id Parámetro ID para buscar en la base de datos
-     * @return Objeto Autor con los datos encontrados
+     * @return Objeto Autor
      * @throws SQLException
      * @throws Exception 
      */
@@ -84,7 +84,7 @@ public class AutorDAO extends Conexion {
     //creamos el metodo modificar
     /**
      * Método para modificar Autor en la base de datos
-     * @param autor Objeto Autor con los datos modificados
+     * @param autor Objeto autor
      * @throws SQLException 
      */
     public void modificar(Autor autor) throws SQLException {
@@ -100,8 +100,8 @@ public class AutorDAO extends Conexion {
     //creamos metodo Eliminar.
     /**
      * 
-     * @param id int con el ID que se ejecutará la QUERY
-     * @return int con el número de filas afectadas
+     * @param id
+     * @return entero 
      */
     public int eliminar(int id) {
         int entero = 0;
