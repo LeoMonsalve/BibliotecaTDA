@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Estado
  * @author henrr
  */
 public class EstadoDAO extends Conexion {
@@ -20,6 +20,10 @@ public class EstadoDAO extends Conexion {
         super();
     }
     //implementamos metodo insertar
+    /**
+     * Método para insertar nuevo Estado en la base de datos
+     * @param estado Objeto Estado con todos los datos a insertar
+     */
     public void insertar(Estado estado){
             try {
             super.conectar();
@@ -33,6 +37,13 @@ public class EstadoDAO extends Conexion {
         }
     }
     //creamos metodo para buscar por ID 
+    /**
+     * Método para buscar Estado por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Estado con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Estado buscar(int id) throws SQLException, Exception{
         super.conectar();
         //creamos nuevo objeto para tomar los valores 
@@ -45,7 +56,13 @@ public class EstadoDAO extends Conexion {
         }
         return estado;
     }
-//implementamos metodo para listar todos los estados 
+//implementamos metodo para listar todos los estados
+    /**
+     * Método para devolver todas los estados de la base de datos
+     * @return ArrayList con todas los estados
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Estado> listarEstados() throws SQLException, Exception{
 
         super.conectar();
@@ -66,6 +83,10 @@ public class EstadoDAO extends Conexion {
     }
     
     // implementamos metodo para modificar los estados
+    /** 
+     * Método para modificar Estado en la base de datos
+     * @param estado Objeto Estado con los datos modificados
+     */
     public void modificar(Estado estado){
       try {
         super.conectar();
@@ -76,6 +97,11 @@ public class EstadoDAO extends Conexion {
       }  
     }
     //iimplementamos metodo para eliminar estado.
+    /**
+     * Método que elimina Estado por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

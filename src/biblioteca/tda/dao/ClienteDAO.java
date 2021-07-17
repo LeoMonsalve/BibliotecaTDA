@@ -23,6 +23,10 @@ public class ClienteDAO extends Conexion {
         super();
     }
     //Creamos metodo para insertar los valores.
+    /**
+     * Método para insertar nueva Ciudad en la base de datos
+     * @param cliente Objeto Cliente con todos los datos a insertar
+     */
     public void insertar(Cliente cliente) {
         try {
             super.conectar();
@@ -38,6 +42,13 @@ public class ClienteDAO extends Conexion {
         }
     }
     //creamos metodo para buscar por ID 
+    /**
+     * Método para buscar Cliente por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Cliente con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Cliente buscar(int id) throws SQLException, Exception {
         super.conectar();
         //creamos nuevo objeto para tomar los valores
@@ -68,6 +79,12 @@ public class ClienteDAO extends Conexion {
     }
     
     //listammos los clientes 
+    /**
+     * Método para devolver todos las clientes de la base de datos
+     * @return ArrayList con todos los clientes
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Cliente> listarClientes() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM cliente");
@@ -99,6 +116,10 @@ public class ClienteDAO extends Conexion {
         return clientes;      
     }
     //creamos metodo modificar
+    /**
+     * Método para modificar Cliente en la base de datos
+     * @param cliente Objeto Cliente con los datos modificados
+     */
     public void modificar(Cliente cliente) {
         try {
             super.conectar();
@@ -116,6 +137,11 @@ public class ClienteDAO extends Conexion {
         }
     }
     //creamos metodo eliminar
+    /**
+     * Método que elimina Cliente por ID
+     * @param id int requerido para buscar en la base de datos
+     * @return int con el número de filas afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

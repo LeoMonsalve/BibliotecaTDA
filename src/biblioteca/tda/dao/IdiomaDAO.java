@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Idioma
  * @author henrry
  */
 public class IdiomaDAO extends Conexion {
@@ -22,6 +22,10 @@ public class IdiomaDAO extends Conexion {
         super();
     }
 //creamos metodo para insertar unn Idioma
+    /**
+     * Método para insertar nuevo Distribuidor en la base de datos
+     * @param idioma Objeto idioma con todos los datos a insertar
+     */
     public void insertar(Idioma idioma) {
         try {
             super.conectar();
@@ -34,6 +38,13 @@ public class IdiomaDAO extends Conexion {
         }
     }
     //implementamos metodo que nos permite buscar por ID de idioma
+    /**
+     * Método para buscar Idioma por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Idioma con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Idioma buscar(int id) throws SQLException, Exception {
         super.conectar();
         //creamos nuevo objeto para que tome los valores
@@ -47,6 +58,12 @@ public class IdiomaDAO extends Conexion {
         return idioma;
     }
     //creamos metodo que nos listará los idiomas
+    /**
+     * Método para devolver todos los idiomas de la base de datos
+     * @return ArrayList con todos los idiomas
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Idioma> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM idioma");
@@ -64,6 +81,10 @@ public class IdiomaDAO extends Conexion {
         return idiomas;
     }
     //creamos metodo modificar idioma
+    /**
+     * Método para modificar Idioma en la base de datos
+     * @param idioma Objeto Distribuidor con los datos modificados
+     */
     public void modificar(Idioma idioma) throws SQLException {
         try {
             super.conectar();
@@ -75,6 +96,11 @@ public class IdiomaDAO extends Conexion {
         }
     }
     //creamos metodo que nos permite eliminar un idioma
+    /**
+     * Método que elimina Idioma por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

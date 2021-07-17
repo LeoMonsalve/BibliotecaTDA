@@ -24,8 +24,8 @@ public class BoletaMultaDAO extends Conexion {
      //insertamos valores en la BBDD
      
     /**
-     * Método para insertar nueva Boleta en la base de datos
-     * @param boletaMulta 
+     * Método para insertar nueva boletaMulta en la base de datos
+     * @param boletaMulta Objeto Boleto con todos los datos a insertar
      */
     public void insertar(BoletaMulta boletaMulta) {
         try {
@@ -41,8 +41,8 @@ public class BoletaMultaDAO extends Conexion {
     }
     
     /**
-     * 
-     * @param id 
+     * Método para buscar boletaMulta por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
      * @return Boleta con los datos buscados en la base de Datos
      * @throws SQLException 
      */
@@ -58,7 +58,6 @@ public class BoletaMultaDAO extends Conexion {
         ResultSet result = state.executeQuery("SELECT * FROM boleta_multa WHERE id = '" + id + "' ;");
         
         while (result.next()) {
-            
             bm.setId((int) result.getObject(1));
             fechaNormal= (Date) result.getObject(2);
             fechaParseada =df.format(fechaNormal);
@@ -70,6 +69,11 @@ public class BoletaMultaDAO extends Conexion {
     }
     
     //Creamos metodo para listar 
+    /**
+     * Método para devolver todas las comunas de la base de datos
+     * @return ArrayList con todos las boletaMultas
+     * @throws SQLException 
+     */
     public ArrayList<BoletaMulta> listar() throws SQLException {
         super.conectar();
         //creamos objeto para parsear el Date
@@ -95,6 +99,11 @@ public class BoletaMultaDAO extends Conexion {
         return bms;
     }
     //creamos metodo para modificar 
+    /**
+     * Método para modificar boletaMulta en la base de datos
+     * @param boletaMulta Objeto boletaMulta con los datos modificados
+     * @throws SQLException 
+     */
     public void modificar(BoletaMulta boletaMulta) throws SQLException {
         try {
             super.conectar();
@@ -106,6 +115,11 @@ public class BoletaMultaDAO extends Conexion {
         }
     }
     //creamos metodo para eliminar
+    /**
+     * Método que elimina boletaMulta por ID
+     * @param id int requerido para buscar en la base de datos
+     * @return int con el número de filas afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

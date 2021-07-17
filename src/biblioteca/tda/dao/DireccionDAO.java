@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Direccion
  * @author henrry
  */
 public class DireccionDAO extends Conexion {
@@ -20,6 +20,10 @@ public class DireccionDAO extends Conexion {
         super();
     }
     //Implementamos metodo insertar 
+    /**
+     * Método para insertar nueva Direccion en la base de datos
+     * @param direccion Objeto Direccion con todos los datos a insertar
+     */
     public void insertar(Direccion direccion) {
         try {
             super.conectar();
@@ -33,6 +37,13 @@ public class DireccionDAO extends Conexion {
         }
     }
     //buscamos una direccion por ID 
+    /**
+     * Método para buscar Direccion por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Direccion con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Direccion buscar(int id) throws SQLException, Exception {
         super.conectar();
         //creamos nuevo objeto que tome los valores
@@ -49,6 +60,12 @@ public class DireccionDAO extends Conexion {
         return direccion;
     }
     //Creamos metodo que nos liste todas las direcciones
+    /**
+     * Método para devolver todas las direcciones de la base de datos
+     * @return ArrayList con todas las direcciones
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Direccion> listarDirecciones() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM direccion");
@@ -78,6 +95,10 @@ public class DireccionDAO extends Conexion {
         return direcciones;
     }
     //creamos metodo modificar 
+    /**
+     * Método para modificar Direccion en la base de datos
+     * @param direccion Objeto Direccion con los datos modificados
+     */
     public void modificar(Direccion direccion) {
         try {
             super.conectar();
@@ -91,6 +112,11 @@ public class DireccionDAO extends Conexion {
         }
     }
     //creamos metodo eliminar
+    /**
+     * Método que elimina Direccion por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

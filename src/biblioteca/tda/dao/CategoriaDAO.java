@@ -20,6 +20,10 @@ public class CategoriaDAO extends Conexion {
         super();
     }
     //creamos metodo para insertar
+    /**
+     * Método para insertar nueva Categoria en la base de datos
+     * @param categoria Objeto Categoria con todos los datos a insertar
+     */
     public void insertar(Categoria categoria){
             try {
             super.conectar();
@@ -33,6 +37,13 @@ public class CategoriaDAO extends Conexion {
         }
     }
 // buscamos categoria
+    /**
+     * Método para buscar Categoria por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Categoria con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Categoria buscar(int id) throws SQLException, Exception{
         super.conectar();
         //creamos nuevo objeto para setearle los valores.
@@ -47,6 +58,12 @@ public class CategoriaDAO extends Conexion {
         return categoria;
     }
     //metodo para Listar categorias
+    /**
+     * Método para devolver todas las cateogiras de la base de datos
+     * @return ArrayList con todos las categorias 
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Categoria> listarCategorias() throws SQLException, Exception{
 
         super.conectar();
@@ -68,6 +85,10 @@ public class CategoriaDAO extends Conexion {
         return categorias;
     }
     //creamos metodo modificar 
+    /**
+     * Método para modificar categoria en la base de datos
+     * @param categoria Objeto Categoria con los datos modificados
+     */
     public void modificar(Categoria categoria){
       try {
         super.conectar();
@@ -79,6 +100,11 @@ public class CategoriaDAO extends Conexion {
       }  
     }
     //creamos metodo eliminar.
+    /**
+     * Método que elimina Categoria por ID
+     * @param id int requerido para buscar en la base de datos
+     * @return int con el número de filas afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

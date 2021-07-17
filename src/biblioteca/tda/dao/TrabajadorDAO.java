@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Trabajador
  * @author henrry
  */
 public class TrabajadorDAO extends Conexion {
@@ -23,6 +23,10 @@ public class TrabajadorDAO extends Conexion {
         super();
     }
     
+    /**
+     * Método para insertar nuevo Trabajador en la base de datos
+     * @param trabajador Objeto Trabajador con todos los datos a insertar
+     */
     public void insertar(Trabajador trabajador) {
         try {
             super.conectar();
@@ -38,6 +42,13 @@ public class TrabajadorDAO extends Conexion {
         }
     }
     
+    /**
+     * Método para buscar Trabajador por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Trabajador con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Trabajador buscar(int id) throws SQLException, Exception {
         super.conectar();
         Trabajador trabajador = new Trabajador();
@@ -65,6 +76,12 @@ public class TrabajadorDAO extends Conexion {
         return trabajador;
     }
     
+    /**
+     * Método para devolver todos los Trabajadores de la base de datos
+     * @return ArrayList con todos los Trabajadores
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Trabajador> listarTrabajadores() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM trabajador");
@@ -93,6 +110,10 @@ public class TrabajadorDAO extends Conexion {
         return trabajadores;      
     }
     
+    /**
+     * Método para modificar trabajador en la base de datos
+     * @param trabajador Objeto trabajador con los datos modificados
+     */
     public void modificar(Trabajador trabajador) {
         try {
             super.conectar();
@@ -110,6 +131,11 @@ public class TrabajadorDAO extends Conexion {
         }
     }
     
+     /**
+     * Método que elimina Trabajador por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

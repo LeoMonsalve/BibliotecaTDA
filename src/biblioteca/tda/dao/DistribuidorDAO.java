@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Distribuidor
  * @author henrry
  */
 public class DistribuidorDAO extends Conexion {
@@ -23,6 +23,10 @@ public class DistribuidorDAO extends Conexion {
         super();
     }
 //creamos metodo para insertar valores 
+    /**
+     * Método para insertar nuevo Distribuidor en la base de datos
+     * @param distribuidor Objeto Distribuidor con todos los datos a insertar
+     */
     public void insertar(Distribuidor distribuidor) {
         try {
             super.conectar();
@@ -37,6 +41,13 @@ public class DistribuidorDAO extends Conexion {
         }
     }
     //implementamos metodo para buscar por ID 
+    /**
+     * Método para buscar Distribuidor por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Distribuidor con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Distribuidor buscar(int id) throws SQLException, Exception {
         super.conectar();
         Distribuidor distribuidor = new Distribuidor();
@@ -61,6 +72,12 @@ public class DistribuidorDAO extends Conexion {
         return distribuidor;
     }
 //Creamos metodo que nos lista todos los Distribuidores
+    /**
+     * Método para devolver todos los distribuidores de la base de datos
+     * @return ArrayList con todos los distribuidores
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Distribuidor> listarDistribuidores() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM distribuidor");
@@ -87,6 +104,10 @@ public class DistribuidorDAO extends Conexion {
         return distribuidores;
     }
     //implementamos el metodo modificar
+    /**
+     * Método para modificar Distribuidor en la base de datos
+     * @param distribuidor Objeto Distribuidor con los datos modificados
+     */
     public void modificar(Distribuidor distribuidor) {
         try {
             super.conectar();
@@ -102,6 +123,11 @@ public class DistribuidorDAO extends Conexion {
         }
     }
     //creamos metodo para eliminar.
+    /**
+     * Método que elimina Distribuidor por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

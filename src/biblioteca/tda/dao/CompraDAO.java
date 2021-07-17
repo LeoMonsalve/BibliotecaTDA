@@ -11,6 +11,10 @@ public class CompraDAO extends Conexion{
     }
     
     //creamos metodo insertar 
+    /**
+     * Método para insertar nueva Compra en la base de datos
+     * @param compra Objeto Compra con todos los datos a insertar
+     */
     public void insertar(Compra compra){
             try {
             super.conectar();
@@ -25,6 +29,13 @@ public class CompraDAO extends Conexion{
         }
     } 
     //creamos metodo buscar por ID 
+    /**
+     * Método para buscar Compra por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Compra con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Compra buscar(int id) throws SQLException, Exception{
         super.conectar();
         //Creamos nuevo objeto compra para tomar los valores.
@@ -40,6 +51,12 @@ public class CompraDAO extends Conexion{
         return compra;
     }
 //creamos metodo para listar las compras 
+    /**
+     * Método para devolver todos las Comopra de la base de datos
+     * @return ArrayList con todos las compras
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Compra> listarCompras() throws SQLException, Exception{
 
         super.conectar();
@@ -62,6 +79,10 @@ public class CompraDAO extends Conexion{
     }
     
     //Creamos metodo modificar
+    /**
+     * Método para modificar Compra en la base de datos
+     * @param compra Objeto Compra con los datos modificados
+     */
     public void modificar(Compra compra){
       try {
         super.conectar();
@@ -74,6 +95,11 @@ public class CompraDAO extends Conexion{
       }  
     }
     //Cremaos metodo eliminar
+    /**
+     * Método que elimina Compra por ID
+     * @param id int requerido para buscar en la base de datos
+     * @return int con el número de filas afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {

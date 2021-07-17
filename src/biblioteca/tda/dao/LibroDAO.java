@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Libro
  * @author henrry
  */
 public class LibroDAO extends Conexion {
@@ -23,6 +23,10 @@ public class LibroDAO extends Conexion {
         super();
     }
 //Creamos metodo para insertar un nuevo libro
+    /**
+     * Método para insertar nuevo Libro en la base de datos
+     * @param libro Objeto Libro con todos los datos a insertar
+     */
     public void insertar(Libro libro) {
         try {
             super.conectar();
@@ -41,6 +45,13 @@ public class LibroDAO extends Conexion {
         }
     }
 //creamos metodo para buscar un libro por su ID 
+    /**
+     * Método para buscar Libro por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Libro con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Libro buscar(int id) throws SQLException, Exception {
         super.conectar();
         Libro libro = new Libro();
@@ -79,6 +90,12 @@ public class LibroDAO extends Conexion {
         return libro;
     }
 
+    /**
+     * Método para devolver todos los libros de la base de datos
+     * @return ArrayList con todas los libros
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Libro> listarLibros() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM libro");
@@ -123,6 +140,10 @@ public class LibroDAO extends Conexion {
         return libros;
     }
     //creamos metodo para 
+    /**
+     * Método para modificar Libro en la base de datos
+     * @param libro Objeto Libro con los datos modificados
+     */
     public void modificar(Libro libro) {
         try {
             super.conectar();
@@ -138,6 +159,11 @@ public class LibroDAO extends Conexion {
         }
     }
     //creamos metodo eliminar libro
+    /**
+     * Método que elimina Libro por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id){
         int entero=0;
         try {
