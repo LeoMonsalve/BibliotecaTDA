@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Factura
  * @author henrry
  */
 public class FacturaDAO extends Conexion {
@@ -20,6 +20,10 @@ public class FacturaDAO extends Conexion {
         super();
     }
 //Creamos metodo para insertar una factura
+    /**
+     * Método para insertar nueva Factura en la base de datos
+     * @param factura 
+     */
     public void insertar(Factura factura) {
         try {
             super.conectar();
@@ -35,6 +39,13 @@ public class FacturaDAO extends Conexion {
         }
     }
     //implementamos metodo que nos busque una factura 
+    /**
+     * Método para buscar Factura por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Factura con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Factura buscar(int id) throws SQLException, Exception {
         super.conectar();
         //creamos nuevo objeto para que tome los valores.
@@ -54,6 +65,12 @@ public class FacturaDAO extends Conexion {
         return factura;
     }
     //creamos metodo que nos listará todas la facturas
+    /**
+     * Método para devolver todas las facturas de la base de datos
+     * @return ArrayList con todas las facturas
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Factura> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM factura");
@@ -78,6 +95,10 @@ public class FacturaDAO extends Conexion {
     }
     
     //creamos metodo para modificar una factura
+    /**
+     * Método para modificar factura en la base de datos
+     * @param factura Objeto factura con los datos modificados
+     */
     public void modificar(Factura factura) throws SQLException {
         try {
             super.conectar();
@@ -92,7 +113,11 @@ public class FacturaDAO extends Conexion {
         }
     }
     //creamos metodo para eliminar una factura
-    
+    /**
+     * Método que elimina Direccion por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

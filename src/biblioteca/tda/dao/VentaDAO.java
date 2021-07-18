@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Venta
  * @author leone
  */
 public class VentaDAO extends Conexion {
@@ -19,6 +19,10 @@ public class VentaDAO extends Conexion {
         super();
     }
 
+    /**
+     * Método para insertar nuevo Venta en la base de datos
+     * @param distribuidor Objeto Venta con todos los datos a insertar
+     */
     public void insertar(Venta venta) {
         try {
             super.conectar();
@@ -32,6 +36,14 @@ public class VentaDAO extends Conexion {
         }
     }
     
+    
+    /**
+     * Método para buscar Venta por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Venta con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Venta buscar(int id) throws SQLException {
         super.conectar();
         Venta v = new Venta();
@@ -46,6 +58,13 @@ public class VentaDAO extends Conexion {
         return v;
     }
     
+    
+    /**
+     * Método para devolver todos los ventas de la base de datos
+     * @return ArrayList con todos los ventas
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Venta> listar() throws SQLException {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM venta");
@@ -63,6 +82,10 @@ public class VentaDAO extends Conexion {
         return vs;
     }
     
+    /**
+     * Método para modificar venta en la base de datos
+     * @param distribuidor Objeto venta con los datos modificados
+     */
     public void modificar(Venta venta) throws SQLException {
         try {
             super.conectar();
@@ -74,6 +97,11 @@ public class VentaDAO extends Conexion {
         }
     }
     
+    /**
+     * Método que elimina Venta por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

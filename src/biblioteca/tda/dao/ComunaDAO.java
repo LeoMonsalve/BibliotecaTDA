@@ -21,7 +21,7 @@ public class ComunaDAO extends Conexion {
 //creamos metodo insertar para la BBDD
       /**
        * Método para insertar nueva Comuna en la base de datos
-       * @param comuna 
+       * @param comuna Objeto Comuna con todos los datos a insertar
        */
     public void insertar(Comuna comuna) {
         try {
@@ -37,8 +37,8 @@ public class ComunaDAO extends Conexion {
     
     /**
      * Método para buscar Comuna por ID en la base de datos
-     * @param id
-     * @return Objeto comuna
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Comuna con los datos buscados en la base de Datos
      * @throws SQLException
      * @throws Exception 
      */
@@ -60,8 +60,8 @@ public class ComunaDAO extends Conexion {
     
     /**
      * Método para buscar Comuna por nombre comuna en la base de datos
-     * @param nombreComuna
-     * @return Objeto 
+     * @param nombreComuna Parámetro String para buscar en la base de datos
+     * @return Objeto Comuna con los datos buscados en la base de Datos 
      * @throws SQLException
      * @throws Exception 
      */
@@ -109,7 +109,7 @@ public class ComunaDAO extends Conexion {
     //implementamos metodo modificar 
     /**
      * Método para modificar comuna en la base de datos
-     * @param comuna
+     * @param comuna Objeto Comuna con los datos modificados
      * @throws SQLException 
      */
     public void modificar(Comuna comuna) throws SQLException {
@@ -125,7 +125,7 @@ public class ComunaDAO extends Conexion {
     //implementamos metodo eliminar 
     /**
      * Método que elimina comuna por ID
-     * @param id
+     * @param id int requerido para buscar en la base de datos
      * @return entero con el numero de filas que fueron afectadas
      */
     public int eliminar(int id) {

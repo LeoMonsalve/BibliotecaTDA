@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Multa
  * @author henrry
  */
 public class MultaDAO extends Conexion {
@@ -20,6 +20,10 @@ public class MultaDAO extends Conexion {
         super();
     }
     
+    /**
+     * Método para insertar nueva Multa en la base de datos
+     * @param distribuidor Objeto Multa con todos los datos a insertar
+     */
     public void insertar(Multa multa) {
         try {
             super.conectar();
@@ -32,6 +36,13 @@ public class MultaDAO extends Conexion {
         }
     }
     
+    /**
+     * Método para buscar Multta por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Multa con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Multa buscar(int id) throws SQLException {
         super.conectar();
         Multa multa = new Multa();
@@ -43,6 +54,12 @@ public class MultaDAO extends Conexion {
         return multa;
     }
     
+    /**
+     * Método para devolver todas las multas de la base de datos
+     * @return ArrayList con todos las multas
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Multa> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM autor");
@@ -59,6 +76,10 @@ public class MultaDAO extends Conexion {
         return multas;
     }
     
+    /**
+     * Método para modificar Multa en la base de datos
+     * @param multa Objeto Distribuidor con los datos modificados
+     */
     public void modificar(Multa multa) throws SQLException {
         try {
             super.conectar();
@@ -70,6 +91,11 @@ public class MultaDAO extends Conexion {
         }        
     }
     
+    /**
+     * Método que elimina Multa por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

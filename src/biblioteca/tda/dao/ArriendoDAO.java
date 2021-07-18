@@ -26,7 +26,7 @@ public class ArriendoDAO extends Conexion {
     //insertar valores en bbdd
     /**
      * Método para insertar nuevo Arriendo en la base de datos
-     * @param arriendo 
+     * @param arriendo Objeto arriendo con todos los datos a insertar
      */
     public void insertar(Arriendo arriendo) {
         try {
@@ -45,8 +45,8 @@ public class ArriendoDAO extends Conexion {
     //buscando por id en bbdd
     /**
      * Método para buscar arriendo por ID en la base de datos
-     * @param id 
-     * @return Objeto Arriendo
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Autor con los datos encontrados
      * @throws SQLException 
      */
     public Arriendo buscar(int id) throws SQLException {
@@ -123,7 +123,7 @@ public class ArriendoDAO extends Conexion {
     
     /**
      * Método para modificar Arriendo en la base de datos
-     * @param arriendo objeto modificado
+     * @param arriendo Objeto arriendo con los datos modificados
      */
     public void modificar(Arriendo arriendo) {
         try {
@@ -147,7 +147,7 @@ public class ArriendoDAO extends Conexion {
      * @param id int requerido para buscar en la base de datos
      * @return int con el número de filas afectadas
      */
-    public int eliminar(int id){
+    public int eliminar(int id) {
         int entero=0;
         try {
             super.conectar();

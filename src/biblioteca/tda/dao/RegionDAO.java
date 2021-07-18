@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Region
  * @author leone
  */
 public class RegionDAO extends Conexion {
@@ -19,6 +19,10 @@ public class RegionDAO extends Conexion {
         super();
     }
 
+     /**
+     * Método para insertar nueva Region en la base de datos
+     * @param region Objeto Distribuidor con todos los datos a insertar
+     */
     public void insertar(Region region) {
         try {
             super.conectar();
@@ -30,6 +34,13 @@ public class RegionDAO extends Conexion {
         }
     }
     
+    /**
+     * Método para buscar Region por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Region con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Region buscar(int id) throws SQLException, Exception {
         super.conectar();
         Region region = new Region();
@@ -43,6 +54,12 @@ public class RegionDAO extends Conexion {
         return region;
     }
     
+    /**
+     * Método para devolver todos las regiones de la base de datos
+     * @return ArrayList con todos las regiones
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Region buscar(String nombre) throws SQLException, Exception {
         super.conectar();
         Region region = new Region();
@@ -56,6 +73,12 @@ public class RegionDAO extends Conexion {
         return region;
     }
     
+    /**
+     * Método para devolver todos las regiones de la base de datos
+     * @return ArrayList con todos las regiones
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Region> listar() throws SQLException, Exception {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM region");
@@ -72,6 +95,10 @@ public class RegionDAO extends Conexion {
         return regiones;
     }
     
+    /**
+     * Método para modificar region en la base de datos
+     * @param region Objeto region con los datos modificados
+     */
     public void modificar(Region region) throws SQLException {
         try {
             super.conectar();
@@ -83,6 +110,11 @@ public class RegionDAO extends Conexion {
         }
     }
     
+    /**
+     * Método que elimina Region por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

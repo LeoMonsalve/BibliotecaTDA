@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * DAO para el manejo de la base de datos con la tabla Telefono
  * @author leone
  */
 public class TelefonoDAO extends Conexion {
@@ -19,6 +19,11 @@ public class TelefonoDAO extends Conexion {
         super();
     }
 
+     
+     /**
+     * Método para insertar nuevo Telefono en la base de datos
+     * @param distribuidor Objeto Telefono con todos los datos a insertar
+     */
     public void insertar(Telefono telefono) {
         try {
             super.conectar();
@@ -31,6 +36,13 @@ public class TelefonoDAO extends Conexion {
         }
     }
     
+    /**
+     * Método para buscar Telefono por ID en la base de datos
+     * @param id Parámetro ID para buscar en la base de datos
+     * @return Objeto Telefono con los datos buscados en la base de Datos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Telefono buscar(int id) throws SQLException {
         super.conectar();
         Telefono telefono = new Telefono();
@@ -44,6 +56,12 @@ public class TelefonoDAO extends Conexion {
         return telefono;
     }
     
+    /**
+     * Método para devolver todos los telefonos de la base de datos
+     * @return ArrayList con todos los telefonos
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Telefono> listar() throws SQLException {
         super.conectar();
         ResultSet result = state.executeQuery("SELECT * FROM telefono");
@@ -60,6 +78,10 @@ public class TelefonoDAO extends Conexion {
         return telefonos;
     }
     
+    /**
+     * Método para modificar telefonos en la base de datos
+     * @param telefono Objeto Telefono con los datos modificados
+     */
     public void modificar(Telefono telefono) throws SQLException {
         try {
             super.conectar();
@@ -70,7 +92,11 @@ public class TelefonoDAO extends Conexion {
             ex.printStackTrace();
         }
     }
-    
+    /**
+     * Método que elimina Telefono por ID
+     * @param id int requerido para eliminar en la base de datos
+     * @return entero con el numero de filas que fueron afectadas
+     */
     public int eliminar(int id) {
         int entero = 0;
         try {

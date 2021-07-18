@@ -6,12 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+/**
+ * 
+ * @author henrr
+ */
 public class EditorialDAO extends Conexion{
     
     public EditorialDAO(){
         super();
     }
     //implementamos metodo insertar 
+    /**
+     * 
+     * @param editorial 
+     */
     public void insertar(Editorial editorial){
             try {
             super.conectar();
@@ -25,6 +34,13 @@ public class EditorialDAO extends Conexion{
         }
     }
     //implementamos metodo para buscar una editorial por ID
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Editorial buscar(int id) throws SQLException, Exception{
         super.conectar();
         Editorial editorial = new Editorial();
@@ -37,6 +53,12 @@ public class EditorialDAO extends Conexion{
         return editorial;
     }
     //Creamos metodo que nos liste todas las editoriales 
+    /**
+     * 
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
     public ArrayList<Editorial> listarEditorial() throws SQLException, Exception{
 
         super.conectar();
@@ -58,6 +80,10 @@ public class EditorialDAO extends Conexion{
     }
     
     //implementamos el metodo modificar
+    /**
+     * 
+     * @param editorial 
+     */
     public void modificar(Editorial editorial){
       try {
         super.conectar();
@@ -69,6 +95,11 @@ public class EditorialDAO extends Conexion{
       }  
     }
     //implementamos el metodo eliminar
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public int eliminar(int id){
         int entero=0;
         try {
