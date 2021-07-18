@@ -6,18 +6,27 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Editorial
  * @author leone
  */
 public class Editorial {
     private int id;
     private String nombre;
 
+    /**
+     * Constructor sin parámetros
+     */
+    public Editorial(){
+    }
+
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param nombre
+     */
     public Editorial(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-    }
-    public Editorial(){
     }
 
     public int getId() {
@@ -40,6 +49,10 @@ public class Editorial {
         }
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Editorial{" + "id=" + id + ", nombre=" + nombre + '}';

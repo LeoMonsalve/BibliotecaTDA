@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Direccion
  * @author henrry
  */
 public class Direccion {
@@ -16,9 +16,20 @@ public class Direccion {
     private int comunaId;
     private int listaDirecciones;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Direccion() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param calle
+     * @param numero
+     * @param comunaId
+     * @param listaDirecciones
+     */
     public Direccion(int id, String calle, String numero, int comunaId, int listaDirecciones) {
         this.id = id;
         this.calle = calle;
@@ -71,12 +82,12 @@ public class Direccion {
         this.listaDirecciones = listaDirecciones;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Direccion{" + "id=" + id + ", calle=" + calle + ", numero=" + numero + ", comunaId=" + comunaId + ", listaDirecciones=" + listaDirecciones + '}';
     }
-
-    
-    
-    
 }

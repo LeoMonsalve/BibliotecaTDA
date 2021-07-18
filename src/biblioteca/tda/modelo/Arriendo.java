@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Arriendo 
  * @author henrry
  */
 public class Arriendo {
@@ -20,9 +20,25 @@ public class Arriendo {
     private int clienteId;
     private int trabajadoresId;
 
+    /**
+     * Constructor para el modelo arriendo
+     */
     public Arriendo() {
     }
-
+    
+    
+/**
+ * Constructor con todos los parámetros
+ * @param id
+ * @param costoTotal
+ * @param fechaDevolucion
+ * @param fechaReal
+ * @param diasRetraso
+ * @param costoArriendo
+ * @param fechaArriendo
+ * @param clienteId
+ * @param trabajadoresId 
+ */
     public Arriendo(int id, int costoTotal, String fechaDevolucion, String fechaReal, int diasRetraso, int costoArriendo, String fechaArriendo, int clienteId, int trabajadoresId) {
         this.id = id;
         this.costoTotal = costoTotal;
@@ -107,6 +123,10 @@ public class Arriendo {
         this.trabajadoresId = trabajadoresId;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Arriendo{" + "id=" + id + ", costoTotal=" + costoTotal + ", fechaDevolucion=" + fechaDevolucion + ", fechaReal=" + fechaReal + ", diasRetraso=" + diasRetraso + ", costoArriendo=" + costoArriendo + ", fechaArriendo=" + fechaArriendo + ", clienteId=" + clienteId + ", trabajadoresId=" + trabajadoresId + '}';

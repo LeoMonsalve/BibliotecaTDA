@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Distribuidor
  * @author henrry
  */
 public class Distribuidor {
@@ -17,9 +17,21 @@ public class Distribuidor {
     private int direccionId;
     private int telefonoId;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Distribuidor() {
     }
 
+    /**
+     * Contructor con parámetros
+     * @param id
+     * @param rut
+     * @param nombreEmpresa
+     * @param anoDistribucion
+     * @param direccionId
+     * @param telefonoId
+     */
     public Distribuidor(int id, String rut, String nombreEmpresa, String anoDistribucion, int direccionId, int telefonoId) {
         this.id = id;
         this.rut = rut;
@@ -89,6 +101,10 @@ public class Distribuidor {
         this.telefonoId = telefonoId;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Distribuidor{" + "id=" + id + ", rut=" + rut + ", nombreEmpresa=" + nombreEmpresa + ", anoDistribucion=" + anoDistribucion + ", direccionId=" + direccionId + ", telefonoId=" + telefonoId + '}';

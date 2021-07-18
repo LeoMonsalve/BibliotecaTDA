@@ -6,16 +6,25 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo BoletaMulta
  * @author leone
  */
 public class Categoria {
     private int id;
     private String tipo;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Categoria() {
     }
 
+    
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param tipo 
+     */
     public Categoria(int id, String tipo) {
         this.id = id;
         this.tipo = tipo;
@@ -42,6 +51,10 @@ public class Categoria {
         }
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Categoria{" + "id=" + id + ", tipo=" + tipo + '}';

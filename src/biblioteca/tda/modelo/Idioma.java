@@ -13,10 +13,18 @@ public class Idioma {
     private int id;
     private String idioma;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Idioma() {
     }
     
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param idioma
+     */
     public Idioma(int id, String idioma) {
         this.id = id;
         this.idioma = idioma;
@@ -43,6 +51,10 @@ public class Idioma {
         }
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Idioma{" + "id=" + id + ", idioma=" + idioma + '}';

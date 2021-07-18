@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo BoletaMulta
  * @author leone
  */
 public class BoletaMulta {
@@ -15,9 +15,19 @@ public class BoletaMulta {
     private int multaId;
     private int clienteId;
 
+    /**
+     * Constructor sin parámetros
+     */
     public BoletaMulta() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param fecha
+     * @param multaId
+     * @param clienteId 
+     */
     public BoletaMulta(int id, String fecha, int multaId, int clienteId) {
         this.id = id;
         this.fecha = fecha;
@@ -57,10 +67,13 @@ public class BoletaMulta {
         this.clienteId = clienteId;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "BoletaMulta{" + "id=" + id + ", fecha=" + fecha + ", multaId=" + multaId + ", clienteId=" + clienteId + '}';
     }
-    
     
 }

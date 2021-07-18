@@ -3,38 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/MultaDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/DireccionDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/EditorialDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/FacturaDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/RegionDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/CorreoDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/TrabajadorDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/EstadoDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/LibroDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/Conexion.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/CompraDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/DistribuidorDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/VentaDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/MetodoPagoDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/IdiomaDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/ComunaDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/ArriendoDAO.java</file>
-            <file>file:/C:/Users/leone/OneDrive%20-%20INACAP/Documents/GitHub/BibliotecaTDA/src/biblioteca/tda/dao/TelefonoDAO.java</file>
-=======
-=======
->>>>>>> parent of e02d790 (javadocs)
+            <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/CompraDAO.java</file>
             <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/ArriendoDAO.java</file>
+            <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/CorreoDAO.java</file>
+            <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/CategoriaDAO.java</file>
             <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/AutorDAO.java</file>
+            <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/BoletaMultaDAO.java</file>
             <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/ComunaDAO.java</file>
+            <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/ClienteDAO.java</file>
             <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/Conexion.java</file>
-<<<<<<< HEAD
->>>>>>> parent of e02d790 (javadocs)
-=======
->>>>>>> parent of e02d790 (javadocs)
+            <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/CiudadDAO.java</file>
+            <file>file:/C:/Users/henrr/OneDrive/Desktop/drive-download-20210523T213316Z-001/BibliotecaTDA/src/biblioteca/tda/dao/DireccionDAO.java</file>
         </group>
     </open-files>
 </project-private>

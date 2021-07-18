@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Correo
  * @author leone
  */
 public class Correo {
@@ -14,9 +14,18 @@ public class Correo {
     private String correo;
     private  int listaCorreo;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Correo() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param correo
+     * @param listaCorreo
+     */
     public Correo(int id, String correo, int listaCorreo) {
         this.id = id;
         this.correo = correo;
@@ -47,6 +56,10 @@ public class Correo {
         this.listaCorreo = listaCorreo;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Correo{" + "id=" + id + ", correo=" + correo + ", listaCorreo=" + listaCorreo + '}';

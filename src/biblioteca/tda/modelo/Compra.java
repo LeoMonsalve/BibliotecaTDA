@@ -1,3 +1,9 @@
+package biblioteca.tda.modelo;
+
+/**
+ * 
+ * @author henrr
+ */
 public class Compra {
     private int id;
     private String fecha;
@@ -5,10 +11,20 @@ public class Compra {
     private int facturaId;
     
     
+    /**
+     * Constructor sin parámetors
+     */
     public Compra() {
     }
 
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param fecha
+     * @param distribuidorId
+     * @param facturaId
+     */
     public Compra(int id, String fecha, int distribuidorId, int facturaId) {
         this.id = id;
         this.fecha = fecha;
@@ -61,6 +77,10 @@ public class Compra {
     }
 
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Compra [distribuidorId=" + distribuidorId + ", facturaId=" + facturaId + ", fecha=" + fecha + ", id="

@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Factura
  * @author henrry
  */
 public class Factura {
@@ -19,9 +19,23 @@ public class Factura {
     private int distribuidorId;
     private int metodoPagoId;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Factura() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param folio
+     * @param precio
+     * @param precioIva
+     * @param costoIva
+     * @param fechaCompra
+     * @param distribuidorId
+     * @param metodoPagoId
+     */
     public Factura(int id, String folio, int precio, float precioIva, float costoIva, String fechaCompra, int distribuidorId, int metodoPagoId) {
         this.id = id;
         this.folio = folio;
@@ -105,6 +119,10 @@ public class Factura {
         this.metodoPagoId = metodoPagoId;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Factura{" + "id=" + id + ", folio=" + folio + ", precio=" + precio + ", precioIva=" + precioIva + ", costoIva=" + costoIva + ", fechaCompra=" + fechaCompra + ", distribuidorId=" + distribuidorId + ", metodoPagoId=" + metodoPagoId + '}';

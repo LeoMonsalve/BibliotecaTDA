@@ -6,17 +6,27 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Ciudad
  * @author leone
  */
 public class Ciudad {
+
     private int id;
     private String nombre;
     private int regionId;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Ciudad() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param nombre
+     * @param regionId 
+     */
     public Ciudad(int id, String nombre, int regionId) {
         this.id = id;
         this.nombre = nombre;
@@ -51,6 +61,10 @@ public class Ciudad {
         this.regionId = regionId;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Ciudad{" + "id=" + id + ", nombre=" + nombre + ", regionId=" + regionId + '}';

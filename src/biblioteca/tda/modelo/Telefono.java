@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Telefono
  * @author leone
  */
 public class Telefono {
@@ -14,9 +14,18 @@ public class Telefono {
     private String numero;
     private int listaNumeros;
 
+    /**
+     * Constructor sin parámetros
+     */
     public Telefono() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param numero
+     * @param listaNumeros
+     */
     public Telefono(int id, String numero, int listaNumeros) {
         this.id = id;
         this.numero = numero;
@@ -47,11 +56,12 @@ public class Telefono {
         this.listaNumeros = listaNumeros;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Telefono{" + "id=" + id + ", numero=" + numero + ", listaNumeros=" + listaNumeros + '}';
     }
-    
-    
-     
 }

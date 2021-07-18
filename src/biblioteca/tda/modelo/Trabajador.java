@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Trabajador
  * @author henrry
  */
 public class Trabajador {
@@ -20,9 +20,24 @@ public class Trabajador {
     private int listaTelefonosId;
     private int listaCorreoId;
 
+    /**
+     * Constructor con parámetros
+     */
     public Trabajador() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param rut
+     * @param nombre
+     * @param apellidoPaterno
+     * @param apellidoMaterno
+     * @param fechaNacimiento
+     * @param listaDireccionesId
+     * @param listaTelefonosId
+     * @param listaCorreoId
+     */
     public Trabajador(int id, String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, int listaDireccionesId, int listaTelefonosId, int listaCorreoId) {
         this.id = id;
         this.rut = rut;
@@ -107,6 +122,11 @@ public class Trabajador {
         this.listaCorreoId = listaCorreoId;
     }
 
+
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Trabajador{" + "id=" + id + ", rut=" + rut + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", listaDireccionesId=" + listaDireccionesId + ", listaTelefonosId=" + listaTelefonosId + ", listaCorreoId=" + listaCorreoId + '}';

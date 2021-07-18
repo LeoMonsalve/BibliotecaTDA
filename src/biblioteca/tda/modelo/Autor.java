@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Autor
  * @author henrry
  */
 public class Autor {
@@ -14,10 +14,18 @@ public class Autor {
     private String nombre;
     private String apellido;
 
+    /**
+     * Construtor vacio
+     */
     public Autor() {
     }
     
-    
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param nombre
+     * @param apellido 
+     */
 
     public Autor(int id, String nombre, String apellido) {
         this.id = id;
@@ -57,6 +65,10 @@ public class Autor {
         }
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Autor{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + '}';

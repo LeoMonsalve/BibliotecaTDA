@@ -6,7 +6,7 @@
 package biblioteca.tda.modelo;
 
 /**
- *
+ * Modelo Comuna
  * @author leone
  */
 public class Comuna {
@@ -14,9 +14,18 @@ public class Comuna {
      private String nombre;
      private int ciudadId;
      
+     /**
+      * Constructor sin parámetros
+      */
      public Comuna(){
      }
      
+     /**
+      * Constructor con parámetros
+      * @param id
+      * @param nombre
+      * @param cuidadId
+      */
      public Comuna(int id, String nombre, int cuidadId){
          this.ciudadId= cuidadId;
          this.id=id;
@@ -51,6 +60,10 @@ public class Comuna {
         this.ciudadId = ciudadId;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Comuna{" + "id=" + id + ", nombre=" + nombre + ", ciudadId=" + ciudadId + '}';

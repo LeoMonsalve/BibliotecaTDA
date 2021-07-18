@@ -24,9 +24,27 @@ public class Libro {
     private int autor;
 
 
+    /**
+     * Constructor sin parámetros
+     */
     public Libro() {
     }
 
+    /**
+     * Constructor con parámetros
+     * @param id
+     * @param numeroSerie
+     * @param titulo
+     * @param numeroPaginas
+     * @param precioReferencia
+     * @param anoLanzamiento
+     * @param publicacion
+     * @param categoria
+     * @param estado
+     * @param idioma
+     * @param editorial
+     * @param autor
+     */
     public Libro(int id, String numeroSerie, String titulo, int numeroPaginas, int precioReferencia, String anoLanzamiento, String publicacion, int categoria, int estado, int idioma, int editorial, int autor) {
         this.id = id;
         this.numeroSerie = numeroSerie;
@@ -159,6 +177,10 @@ public class Libro {
         this.autor = autor;
     }
 
+    /**
+     * método toString para devolver un String con todos los datos del objeto arriendo
+     * @return devuelve un String con todos los atributos del objeto 
+     */
     @Override
     public String toString() {
         return "Libro{" + "id=" + id + ", numeroSerie=" + numeroSerie 
@@ -168,8 +190,5 @@ public class Libro {
                 + categoria + ", estado=" + estado + ", idioma=" + idioma + ", editorial=" 
                 + editorial + ", autor=" + autor + '}';
     }
-
-    
-    
     
 }
